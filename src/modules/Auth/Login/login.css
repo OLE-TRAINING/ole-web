@@ -1,0 +1,12 @@
+.label {
+  margin-bottom: 0;
+  width: 260px !important;
+}
+
+.info-token {
+   display: flex;
+   font-family: 'Roboto', sans-serif;
+   color: var(--bg-dark) !important;
+   justify-content: flex-end;
+   font-size: 0.7em !important;
+}

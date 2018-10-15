@@ -1,0 +1,23 @@
+.label {
+  margin-bottom: 0;
+  width: 260px !important;
+}
+.label-email-red {
+  font-family: 'Roboto', sans-serif;
+  color: red;
+  font-size: 1.0em;
+  margin-top: 0;
+  margin-bottom: 34px;
+ }
+
+.info-token {
+   display: flex;
+   justify-content: flex-end;
+   font-size: 0.6em !important;
+}
+
+font {
+  color: red;
+  padding-left: 3px;
+}
+ 

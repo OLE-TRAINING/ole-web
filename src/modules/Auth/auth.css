@@ -1,0 +1,61 @@
+.center {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 375px;
+  height: 435px;
+  border-radius: 15px;
+  background-color: #fff;
+}
+
+
+.form {
+  width: 70%;
+}
+
+.label {
+  text-align: center;
+  width: 140px;
+  word-wrap: break-word;
+  font-family: 'Dosis', sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.label-form {
+  font-family: 'Dosis', sans-serif !important;
+  font-weight: bold;
+  color: var(--bg-dark) !important;
+}
+
+.input::after {
+  border-color: var(--bg-dark) !important;
+}
+
+.button-continue {
+  margin: 40px;
+  width: 250px;
+  height: 45px;
+  border-radius: 100px;
+  box-shadow: 0 15px 25px 0 rgba(18, 151, 147, 0.4);
+  border: solid 1px #cfd0d1;
+  background-color: var(--bg-dark);
+  color: white;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+.button-continue:hover {
+  background-color: #0e726f;
+}
+
+
+
+
