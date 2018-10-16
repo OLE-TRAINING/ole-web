@@ -3,11 +3,11 @@ import InputHelperText from '../../../components/InputHelperText'
 
 import './login.css'
 
-class Login extends React {
+class Login extends Component {
   constructor(props){
     super(props)
-    state = {
-      nome: 'ricardo@gmail.com',
+    this.state = {
+      nome: 'ricardo@gmail.com'
     }
   }
   
