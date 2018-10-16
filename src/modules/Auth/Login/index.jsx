@@ -1,26 +1,22 @@
 import React, { Component } from 'react'
-import { FormControl, InputLabel, Input, FormHelperText } from '@material-ui/core';
+import InputHelperText from '../../../components/InputHelperText'
 
 import './login.css'
 
-class Login extends Component {
+class Login extends React {
   constructor(props){
     super(props)
-    this.state = {
+    state = {
       nome: 'ricardo@gmail.com',
     }
   }
-
+  
   render() {
     return (
       <div className="content">
         <p className="label">INFORME SUA SENHA</p>
         <p className="label-email-gray">{this.state.nome}</p>  
-        <FormControl className="form">
-          <InputLabel className="label-form" htmlFor="component-simple">SENHA</InputLabel>
-          <Input className="input" placeholder="password" id="component-simple"/>
-          <FormHelperText className="info-token">Esqueceu a senha?</FormHelperText>
-        </FormControl>
+        <InputHelperText placeholder="Password" label="SENHA" flag="login"/>
         <button className="button-continue" >AVANÇAR</button>
       </div>
     )

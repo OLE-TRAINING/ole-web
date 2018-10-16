@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputLabel, Input, FormHelperText } from '@material-ui/core';
+import InputTextField from '../../../components/inputTextField'
 
 import './register.css'
 
@@ -16,18 +16,9 @@ class Register extends Component {
       <div className="content">
         <p className="label">CRIE SUA NOVA CONTA</p>
         <p className="label-email-gray">{this.state.nome}</p>
-        <FormControl className="form">
-          <InputLabel className="label-form" htmlFor="component-simple">NOME COMPLETO</InputLabel>
-          <Input className="input" id="component-simple"/>
-        </FormControl>
-        <FormControl className="form">
-          <InputLabel className="label-form" htmlFor="component-simple">NOME DE USUÁRIO</InputLabel>
-          <Input className="input" id="component-simple"/>
-        </FormControl>
-        <FormControl className="form">
-          <InputLabel className="label-form" htmlFor="component-simple">SENHA</InputLabel>
-          <Input className="input" id="component-simple"/>
-        </FormControl>
+        <InputTextField placeholder="Name" label="NOME COMPLETO"/>
+        <InputTextField placeholder="User" label="NOME DE USUÁRIO"/>
+        <InputTextField placeholder="Password" label="SENHA"/>
         <button className="button-continue" >AVANÇAR</button>
       </div>
     )

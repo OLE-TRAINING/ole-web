@@ -12,13 +12,13 @@ class Auth extends Component {
   render() {
     return (
       <div className="center">
-        <div className="content">
-          <>
-            <Route exact path="/auth/pre-login" component={PreLogin} />
-            <Route exact path="/auth/token" component={Token} />
-            <Route exact path="/auth/login" component={Login} />
-            <Route exact path="/auth/register" component={Register} />
-          </>
+        <div className="">
+        <Switch>
+          <Route exact path="/auth/pre-login" component={PreLogin} />
+          <Route exact path="/auth/token" component={Token} />
+          <Route exact path="/auth/login" component={Login} />
+          <Route exact path="/auth/register" component={Register} />
+        </Switch>
         </div>
       </div>
     )

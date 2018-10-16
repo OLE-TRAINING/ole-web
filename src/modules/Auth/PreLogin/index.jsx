@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputLabel, Input } from '@material-ui/core';
-import { Redirect } from 'react-router-dom'
+import InputTextField from '../../../components/inputTextField'
 
 class PreLogin extends Component {
 
@@ -8,10 +7,7 @@ class PreLogin extends Component {
     return (
       <div className="content">
         <p className="label">INFORME SEU E-MAIL</p>
-        <FormControl className="form">
-          <InputLabel className="label-form" htmlFor="component-simple">EMAIL</InputLabel>
-          <Input className="input" id="component-simple"/>
-        </FormControl>
+        <InputTextField placeholder="E-mail" label="EMAIL"/>
         <button className="button-continue"  >AVANÇAR</button>
       </div>
     )

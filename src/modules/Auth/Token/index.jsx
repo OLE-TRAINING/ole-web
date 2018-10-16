@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputLabel, Input, FormHelperText } from '@material-ui/core';
+import InputHelperText from '../../../components/InputHelperText'
 
 import './token.css'
 
@@ -18,11 +18,7 @@ class Token extends Component {
       <div className="content">
         <p className="label">{this.state.label}</p>
         <p className="label-email-red">{this.state.nome}</p>
-        <FormControl className="form">
-          <InputLabel className="label-form" htmlFor="component-simple">TOKEN DE VALIDAÇÃO</InputLabel>
-          <Input className="input" placeholder="token" id="component-simple"/>
-          <FormHelperText className="info-token">Não recebeu o codigo? <font color="red">Enviar novamente.</font></FormHelperText>
-        </FormControl>
+        <InputHelperText placeholder="Token" label="TOKEN DE VALIDAÇÃO" flag="token"/>
         <button className="button-continue" >AVANÇAR</button>
       </div>
     )
