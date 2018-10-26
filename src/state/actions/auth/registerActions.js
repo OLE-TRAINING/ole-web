@@ -1,21 +1,26 @@
 import axios from 'axios'
+import { URL, params } from '../config-request-api'
 
-const URL = 'https://ole.dev.gateway.zup.me/client-training/v1'
-
-export const getUser = () => {
-  return(dispatch) => {
-    return axios.get(`${URL}/users/`, 
+export const createUser = (email, name, userName, password) => {
+  const body = {
+    "email": email,
+    "password": password,
+    "completeName":name,
+    "username": userName
+  }
+  
+  return() => {
+    return axios.post(`${URL}/users`, body, 
     {
-      params: {
-        'gw-app-key': '593c3280aedd01364c73000d3ac06d76'
-      }
+      params: params
     })
     .then(response => {
-      const { data } = response
-      
-      dispatch({type: 'GET_USER', payload: data})
-      
-      return data
+      const { status } = response
+      return status
+     })
+     .catch(error => {
+       console.error(error)
+       return error.response
      })
   }
 }

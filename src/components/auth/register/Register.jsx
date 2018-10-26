@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { getUser, clearState } from '../../../state/actions/auth/preLoginActions'
+import {inputFieldValidator} from '../../../utils/inputFieldValidator'
+import { createUser } from '../../../state/actions/auth/registerActions'
 
 import { FormControl, InputLabel, Input } from '@material-ui/core'
+import '../../global/inputTextField-mui/index.css'
 import '../auth.css'
 
 class Register extends Component {
@@ -12,50 +14,91 @@ class Register extends Component {
     super(props)
     this.state = {
       name: '',
-      userName: '',
+      username: '',
       password: '',
-      redirect: false
+      nameValid: false,
+      usernameValid: false,
+      passwordValid: false,
+      isEnabled: false,
     }
 
-    this.redirect = this.redirect.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleNameChange = (e) => {
-    this.setState({ name: e.target.value });
+  componentDidMount() {
+    localStorage.removeItem('register')
   }
-  handleUserChange = (e) => {
-    this.setState({ userName: e.target.value });
-  }
-  handlePasswordChange = (e) => {
-    this.setState({ password: e.target.value });
+  
+  handleChange = (e) => {
+    let change = {}
+    change[e.target.name] = e.target.value
+    this.setState(change);
   }
 
-  redirect() {
-    localStorage.setItem('token',true)
-    this.props.history.push("/token")
+  InputValidator(e, state, rule) {
+    let change = {}
+    if(inputFieldValidator(state,rule)) {
+      change[e.target.name + 'Valid'] = true
+      this.setState(change)
+    } else {
+      change[e.target.name + 'Valid'] = false
+      this.setState(change)
+    }
   }
+
+  handleSubmit = (e) => {
+    const { name, username, password } = this.state
+    const { user, createUser, history } = this.props
+
+    createUser(user.email, name, username, password)
+    .then(resp => {
+      console.log(resp)
+      switch(resp) {
+        case 200:
+          localStorage.setItem('token',true)
+          history.push('/token')
+          break;
+        default:
+          history.push('/register')
+      }
+    }) 
+  }
+
 
   render() {
     const { user } = this.props
-    const { name, userName, password } = this.state
-    const isEnabled = name.length > 0 && userName.length > 0 && password.length > 0
+    const { name, username, password, nameValid, passwordValid, usernameValid } = this.state
+    const isEnabled = nameValid && usernameValid && passwordValid 
+    
     return (
       <div className="content">
         <p className="label">CRIE SUA NOVA CONTA</p>
         <p className="label-email-gray">{user.email}</p>
           <FormControl className="form">
             <InputLabel className="label-form" htmlFor="component-simple">NOME COMPLETO</InputLabel>
-            <Input className="input" value={name} placeholder="Name" name="name" onChange={this.handleNameChange}/>
+            <Input className="input" value={name} placeholder="Name" name="name" 
+              onChange={this.handleChange} 
+              onKeyUp={(e) => this.InputValidator(e, name,'name')}               
+              onBlur={(e) => this.InputValidator(e, name,'name')}/>
+              { (!nameValid) ? <font color="red" className="error-handler" >max 50 caracteres</font> : null }          
           </FormControl>
           <FormControl className="form">
             <InputLabel className="label-form" htmlFor="component-simple">NOME DE USUÁRIO</InputLabel>
-            <Input className="input" value={userName} placeholder="User" name="user" onChange={this.handleUserChange}/>
+            <Input className="input" value={username} placeholder="User" name="username" 
+              onChange={this.handleChange} 
+              onKeyUp={(e) => this.InputValidator(e, username,'username')} 
+              onBlur={(e) => this.InputValidator(e, username,'username')}/>
+              { (!usernameValid) ? <font color="red" className="error-handler" >max 15 caracteres</font> : null }
           </FormControl>
           <FormControl className="form">
             <InputLabel className="label-form" htmlFor="component-simple">SENHA</InputLabel>
-            <Input className="input" type="password" value={password} placeholder="Password" name="password" onChange={this.handlePasswordChange}/>
+            <Input className="input" type="password" value={password} placeholder="Password" name="password" 
+              onChange={this.handleChange} 
+              onKeyUp={(e) => this.InputValidator(e, password,'password')} 
+              onBlur={(e) => this.InputValidator(e, password,'password')}/>
+              { (!passwordValid) ? <font color="red" className="error-handler" >min 6 e max 10 caracteres, letras e números</font> : null }
           </FormControl>
-        <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={this.redirect} >AVANÇAR</button>
+        <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(user.email, name, username, password)} >AVANÇAR</button>
       </div>
     )
   }
@@ -63,7 +106,6 @@ class Register extends Component {
 
 const mapStateToProps = state => ({ user: state.user.user})
 const mapDispatchToProps = (dispatch) => ({ 
-  getUser: bindActionCreators(getUser, dispatch),
-  clearState: bindActionCreators(clearState, dispatch)
+  createUser: bindActionCreators(createUser, dispatch),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Register)

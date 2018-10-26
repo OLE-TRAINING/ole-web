@@ -13,7 +13,8 @@ class PreLogin extends Component {
     super(props)
     this.state = {
       email: '',
-      errorMessage: ''
+      errorMessage: '',
+      formValid: false
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -28,6 +29,13 @@ class PreLogin extends Component {
 
   handleChange = (e) => {
     this.setState({ email: e.target.value });
+    let email = e.target.value
+    if(email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+      this.setState({ formValid: true })
+      return 0
+    } 
+    this.setState({ formValid: false })
+    return 0
   }
 
   handleSubmit(e) {
@@ -51,14 +59,13 @@ class PreLogin extends Component {
           break;
         default:
           this.setState({ errorMessage: data.data.message })
-          return history.push('/prelogin')
+          history.push('/prelogin')
 			}
 		})
 }
 
   render() {
-    const { email, errorMessage } = this.state
-    const isEnabled = email.length > 0
+    const { email, errorMessage, formValid } = this.state
     return (
       <div className="content">
         <p className="label">INFORME SEU E-MAIL</p>    
@@ -67,7 +74,7 @@ class PreLogin extends Component {
             <Input className="input" value={email} placeholder="E-mail" name="email" onChange={this.handleChange}/>
             { errorMessage !== '' ? <font color="red">{errorMessage}<i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i></font> : '' }
           </FormControl>
-        <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(email)} >AVANÇAR</button>       
+        <button disabled={!formValid} className={!formValid ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(email)} >AVANÇAR</button>       
       </div>
     )
   }

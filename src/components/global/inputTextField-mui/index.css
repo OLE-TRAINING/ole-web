@@ -8,14 +8,6 @@
   color: var(--bg-primary-color) !important;
 }
 
-.info-helper {
-  display: flex;
-  font-family: 'Roboto', sans-serif;
-  color: var(--bg-dark) !important;
-  justify-content: flex-end;
-  font-size: 0.7em !important;
-}
-
 .input::after {
   border-color: var(--bg-primary-color) !important;
 }

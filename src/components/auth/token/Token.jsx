@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { getUser, clearState } from '../../../state/actions/auth/preLoginActions'
 
 import { FormControl, InputLabel, Input, FormHelperText } from '@material-ui/core'
+import '../../global/inputTextFieldHelper-mui/index.css'
 import '../auth.css'
 
 class Token extends Component {
@@ -18,6 +19,10 @@ class Token extends Component {
     }
 
     this.redirect = this.redirect.bind(this)
+  }
+
+  componentDidMount() {
+    localStorage.removeItem('token')
   }
 
   handleChange = (e) => {

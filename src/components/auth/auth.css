@@ -1,4 +1,4 @@
-.container {
+.login-box {
   display: flex;
 }
 
@@ -46,6 +46,7 @@
   color: white;
   font-size: 0.9em;
   font-weight: bold;
+  cursor: not-allowed;
 }
 
 .button-continue:hover {
@@ -62,6 +63,14 @@
 
 .errorIcon {
   float: right;
+}
+
+.error-handler {
+  font-weight: bold;
+  font-size: 0.6em;
+}
+.error-none {
+  display: none;
 }
 
 

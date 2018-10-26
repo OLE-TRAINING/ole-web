@@ -1,9 +1,10 @@
 .container {
   display: flex;
-  height: 100vh;
   justify-content: center;
   align-items: center;
+  margin-top: 3%;
 }
+
 
 @keyframes App-logo-spin {
   from {
