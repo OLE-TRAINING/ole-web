@@ -1,0 +1,13 @@
+.form {
+  width: 75%;
+}
+
+.label-form {
+  font-family: 'Dosis', sans-serif !important;
+  font-weight: bold;
+  color: var(--bg-primary-color) !important;
+}
+
+.input::after {
+  border-color: var(--bg-primary-color) !important;
+}

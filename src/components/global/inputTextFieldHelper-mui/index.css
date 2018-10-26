@@ -1,0 +1,27 @@
+.form {
+  width: 75%;
+}
+
+.label-form {
+  font-family: 'Dosis', sans-serif !important;
+  font-weight: bold;
+  color: var(--bg-primary-color) !important;
+}
+
+.info-helper {
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  color: var(--bg-primary-color) !important;
+  justify-content: flex-end;
+  font-size: 0.7em !important;
+  cursor: pointer;
+}
+
+.info-helper:hover {
+  color: #0e726f !important;
+  font-weight: bold;
+}
+
+.input::after {
+  border-color: var(--bg-primary-color) !important;
+}
