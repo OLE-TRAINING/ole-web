@@ -15,8 +15,7 @@ export const createUser = (email, name, userName, password) => {
       params: params
     })
     .then(response => {
-      const { status } = response
-      return status
+      return response
      })
      .catch(error => {
        console.error(error)

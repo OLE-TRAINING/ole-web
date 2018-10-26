@@ -20,6 +20,7 @@ class Register extends Component {
       usernameValid: false,
       passwordValid: false,
       isEnabled: false,
+      errorMessage: '',
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -52,28 +53,28 @@ class Register extends Component {
 
     createUser(user.email, name, username, password)
     .then(resp => {
-      console.log(resp)
-      switch(resp) {
+      switch(resp.status) {
         case 200:
           localStorage.setItem('token',true)
           history.push('/token')
           break;
         default:
-          history.push('/register')
+        this.setState({ errorMessage: resp.data.message })
       }
-    }) 
+    })
   }
 
 
   render() {
     const { user } = this.props
-    const { name, username, password, nameValid, passwordValid, usernameValid } = this.state
+    const { name, username, password, nameValid, passwordValid, usernameValid, errorMessage } = this.state
     const isEnabled = nameValid && usernameValid && passwordValid 
     
     return (
       <div className="content">
         <p className="label">CRIE SUA NOVA CONTA</p>
         <p className="label-email-gray">{user.email}</p>
+          { errorMessage !== '' ? <font className="error-handler" color="red">{errorMessage}<i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i></font> : '' }
           <FormControl className="form">
             <InputLabel className="label-form" htmlFor="component-simple">NOME COMPLETO</InputLabel>
             <Input className="input" value={name} placeholder="Name" name="name" 

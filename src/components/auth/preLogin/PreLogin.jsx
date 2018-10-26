@@ -74,7 +74,7 @@ class PreLogin extends Component {
             <Input className="input" value={email} placeholder="E-mail" name="email" onChange={this.handleChange}/>
             { errorMessage !== '' ? <font color="red">{errorMessage}<i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i></font> : '' }
           </FormControl>
-        <button disabled={!formValid} className={!formValid ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(email)} >AVANÇAR</button>       
+          <button disabled={!formValid} className={!formValid ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(email)} >AVANÇAR</button>       
       </div>
     )
   }
