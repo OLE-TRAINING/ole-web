@@ -5,7 +5,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 420px;
   height: 545px;
@@ -62,7 +62,9 @@
 }
 
 .errorIcon {
-  float: right;
+  margin-top: 3px;
+  padding-right: 5px;
+  float: left;
 }
 
 .error-handler {
@@ -71,6 +73,47 @@
 }
 .error-none {
   display: none;
+}
+
+.animation {
+  animation: fadein var(--speed-fadein);
+  -moz-animation: fadein var(--speed-fadein); /* Firefox */
+  -webkit-animation: fadein var(--speed-fadein); /* Safari and Chrome */
+  -o-animation: fadein var(--speed-fadein); /* Opera */
+}
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-moz-keyframes fadein { /* Firefox */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+  from {
+      opacity:0;
+      left: 100px;
+  }
+  to {
+      opacity:1;
+      left: 100px;
+  }
+}
+@-o-keyframes fadein { /* Opera */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity: 1;
+  }
 }
 
 

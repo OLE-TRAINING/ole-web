@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { getUser, clearState } from '../../../state/actions/auth/preLoginActions'
+import { loginService } from '../../../state/actions/auth/loginActions'
 
 import { FormControl, InputLabel, Input, FormHelperText } from '@material-ui/core';
 import '../../global/inputTextFieldHelper-mui/index.css'
@@ -13,10 +13,9 @@ class Login extends Component {
     super(props)
     this.state = {
       password: '',
-      changeScreenResetPwd: false
+      changeScreen: 'login',
+      errorMessage: ''
     }
-
-    this.redirect = this.redirect.bind(this)
   }
 
   componentDidMount() {
@@ -27,21 +26,34 @@ class Login extends Component {
     this.setState({ password: e.target.value })
   }
 
-  redirect() {
-    localStorage.setItem("user","true")
-    this.props.history.push("/")
+  handleSubmit = (e) => {
+    const { password } = this.state
+    const { user, loginService, history } = this.props
+
+    loginService(user.email, password)
+    .then((resp) => {
+      switch(resp.status) {
+        case 200:
+          localStorage.setItem('user',true)
+          history.push("/")
+          break;
+        default:
+          this.setState({ errorMessage: resp.data.message })
+      }
+    })
   }
 
-  changeScreenResetPwd = () => {this.setState({ changeScreenResetPwd: true })}
-  changeScreenLoginPwd = () => {this.setState({ changeScreenResetPwd: false })}
+  changeScreenGetId = () => {this.setState({ changeScreen: 'getId' })}
+  changeScreenSetPwd = () => {this.setState({ changeScreen: 'setPwd' })}
+  changeScreenLogin = () => {this.setState({ changeScreen: 'login' })}
 
   render() {
-    const { password, changeScreenResetPwd } = this.state
+    const { password, changeScreen, errorMessage } = this.state
     const isEnabled = password.length > 0
     const { user } = this.props
     return (
           <div>
-          {changeScreenResetPwd === false && (
+          {changeScreen === 'login' && (
             <div className="content">
               <p className="label">INFORME SUA SENHA</p>
               <p className="label-email-gray">{user.email}</p>
@@ -49,18 +61,27 @@ class Login extends Component {
                 <InputLabel className="label-form" htmlFor="component-simple">SENHA</InputLabel>
                 <Input className="input" type="password" placeholder="password" name="senha" onChange={this.handleChange}/>
                 <FormHelperText className="info-helper">
-                  <span onClick={this.changeScreenResetPwd}>Esqueceu a senha?</span>
+                  <span onClick={this.changeScreenGetId}>Esqueceu a senha?</span>
                 </FormHelperText>
+                { errorMessage !== '' ? <font className="error-handler" color="red">{errorMessage}<i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i></font> : '' }
               </FormControl>
-              <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={this.redirect} >ENTRAR</button>          
+              <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(user.email, password)} >ENTRAR</button>          
             </div>
           )}
-          {changeScreenResetPwd === true && (
+          {changeScreen === 'getId' && (
             <div className="content">
-              <button onClick={this.changeScreenLoginPwd}>Voltar</button>
-              <p className="label">RECUPERAR SENHA SUA SENHA</p>
+              <button onClick={this.changeScreenLogin}>Voltar</button>
+              <p className="label animation">VALIDAR INFO</p>
+              <p className="label-email-gray animation">{user.email}</p>
+              <button onClick={this.changeScreenSetPwd} >ENTRAR</button>           
+            </div>
+          )}
+          {changeScreen === 'setPwd' && (
+            <div className="content">
+              <button onClick={this.changeScreenGetId}>Voltar</button>
+              <p className="label">TROCAR SENHA</p>
               <p className="label-email-gray">{user.email}</p>
-              <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={this.redirect} >ENTRAR</button>          
+              <button  onClick={this.changeScreenLogin} >ENTRAR</button>          
             </div>
           )}
         </div>
@@ -71,7 +92,6 @@ class Login extends Component {
 
 const mapStateToProps = state => ({ user: state.user.user})
 const mapDispatchToProps = (dispatch) => ({ 
-  getUser: bindActionCreators(getUser, dispatch),
-  clearState: bindActionCreators(clearState, dispatch)
+  loginService: bindActionCreators(loginService, dispatch),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

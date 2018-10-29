@@ -16,9 +16,9 @@ class Register extends Component {
       name: '',
       username: '',
       password: '',
-      nameValid: false,
-      usernameValid: false,
-      passwordValid: false,
+      nameValid: 'not',
+      usernameValid: 'not',
+      passwordValid: 'not',
       isEnabled: false,
       errorMessage: '',
     }
@@ -81,7 +81,7 @@ class Register extends Component {
               onChange={this.handleChange} 
               onKeyUp={(e) => this.InputValidator(e, name,'name')}               
               onBlur={(e) => this.InputValidator(e, name,'name')}/>
-              { (!nameValid) ? <font color="red" className="error-handler" >max 50 caracteres</font> : null }          
+              {(nameValid) || nameValid === 'not' ? null : <font color="red" className="error-handler" >max 50 caracteres</font>}          
           </FormControl>
           <FormControl className="form">
             <InputLabel className="label-form" htmlFor="component-simple">NOME DE USUÁRIO</InputLabel>
@@ -89,7 +89,7 @@ class Register extends Component {
               onChange={this.handleChange} 
               onKeyUp={(e) => this.InputValidator(e, username,'username')} 
               onBlur={(e) => this.InputValidator(e, username,'username')}/>
-              { (!usernameValid) ? <font color="red" className="error-handler" >max 15 caracteres</font> : null }
+              { (usernameValid) || usernameValid === 'not'? null : <font color="red" className="error-handler" >max 15 caracteres</font> }
           </FormControl>
           <FormControl className="form">
             <InputLabel className="label-form" htmlFor="component-simple">SENHA</InputLabel>
@@ -97,7 +97,7 @@ class Register extends Component {
               onChange={this.handleChange} 
               onKeyUp={(e) => this.InputValidator(e, password,'password')} 
               onBlur={(e) => this.InputValidator(e, password,'password')}/>
-              { (!passwordValid) ? <font color="red" className="error-handler" >min 6 e max 10 caracteres, letras e números</font> : null }
+              { (passwordValid) || passwordValid === 'not' ? null : <font color="red" className="error-handler" >min 6 e max 10 caracteres, letras e números</font>}
           </FormControl>
         <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(user.email, name, username, password)} >AVANÇAR</button>
       </div>

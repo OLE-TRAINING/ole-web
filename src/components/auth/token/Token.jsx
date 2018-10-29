@@ -31,11 +31,6 @@ class Token extends Component {
     this.setState({ token: e.target.value });
   }
 
-  redirect() {
-    localStorage.setItem('login',true)
-    this.props.history.push("/login")
-  }
-
   handleSubmit = (e) => {
     const { token } = this.state
     const { user, tokenValidator, history } = this.props
@@ -62,7 +57,7 @@ class Token extends Component {
           this.setState({ resendFeedbackMessage: 'Token enviado com sucesso' })
           break;
         default:
-        //this.setState({ resendFeedbackMessage: resp.data.message || '' })
+          //this.setState({ resendFeedbackMessage: resp.data.message || '' })
       }
     })
   }
