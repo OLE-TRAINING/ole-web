@@ -8,7 +8,7 @@ export const tokenValidator = (email, token) => {
   }
 
   return() => {
-    return axios.post(`${URL}/tokens/${email}/${token}`, body,
+    return axios.post(`${URL}/users/${email}/register/${token}`, body,
     {
       params: params
     })
