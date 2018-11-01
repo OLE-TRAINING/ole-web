@@ -3,65 +3,71 @@ import { URL, params } from '../config-request-api'
 
 export const loginService = (email, password) => {
   const body = {
-    "email": email,
+    "email": email.toLowerCase(),
     "password": password
   }
 
-  return() => {
+  return(dispatch) => {
+    dispatch({type: 'SHOW_LOADER'})
     return axios.post(`${URL}/users/validate`, body,
     {
       params: params
     })
     .then(response => {
+      dispatch({type: 'HIDDEN_LOADER'})
       return response
      })
      .catch(error => {
-       console.error(error)
-       return error.response
-     })
+      dispatch({type: 'HIDDEN_LOADER'})
+      return error.response
+    })
   }
 }
 
 export const getInfo = (username, email) => {
   const body = {
     "username": username,
-    "email": email
+    "email": email.toLowerCase()
   }
 
-  return() => {
+  return(dispatch) => {
+    dispatch({type: 'SHOW_LOADER'})
     return axios.post(`${URL}/users/confirm-data`, body,
     {
       params: params
     })
     .then(response => {
+      dispatch({type: 'HIDDEN_LOADER'})
       return response
-     })
-     .catch(error => {
-       console.error(error)
-       return error.response
-     })
+    })
+    .catch(error => {
+      dispatch({type: 'HIDDEN_LOADER'})
+      return error.response
+    })
   }
 }
 
 export const setPwd = (email, token, password, passwordConfirm) => {
   const body = {
-    "email": email,
+    "email": email.toLowerCase(),
     "confirmationToken": token,
     "newPassword": password,
     "newPasswordConfirmation": passwordConfirm
   }
 
-  return() => {
+  return(dispatch) => {
+    dispatch({type: 'SHOW_LOADER'})
     return axios.put(`${URL}/users/password`, body,
     {
       params: params
     })
     .then(response => {
+      dispatch({type: 'HIDDEN_LOADER'})
       return response
-     })
-     .catch(error => {
-       console.error(error)
-       return error.response
-     })
+    })
+    .catch(error => {
+      dispatch({type: 'HIDDEN_LOADER'})
+      return error.response
+    })
   }
 }

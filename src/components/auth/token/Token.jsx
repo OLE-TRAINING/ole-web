@@ -42,7 +42,7 @@ class Token extends Component {
       switch(resp.status) {
         case 200:
           localStorage.setItem('login',true)
-          history.push("/login")
+          history.replace("/login")
           break;
         default:
           this.setState({ errorMessage: resp.data.message })
@@ -80,8 +80,8 @@ class Token extends Component {
               className="info-helper">Não recebeu o código?
               <font color="red">&nbsp;Enviar novamente.</font>
             </FormHelperText>
-            { resendFeedbackMessage !== '' ? <font className="error-handler" color="blue">{resendFeedbackMessage}</font> : '' }
-            { errorMessage !== '' ? <font className="error-handler" color="red">{errorMessage}<i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i></font> : '' }
+            { resendFeedbackMessage !== '' ? <font className="error-handler" id="hideMe" color="blue">{resendFeedbackMessage}</font> : '' }
+            { errorMessage !== '' ? <font className="error-handler" id="hideMe" color="red"><i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i>{errorMessage}</font> : '' }
           </FormControl>
           <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(user.email,token)} >VALIDAR</button>            
         </div>

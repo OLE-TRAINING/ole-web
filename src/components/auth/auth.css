@@ -1,4 +1,9 @@
 .container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;  
   align-items: center;
@@ -9,9 +14,8 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin: 3%;
-  width: 420px;
-  height: 570px;
+  width: 450px;
+  height: 560px;
   border-radius: 15px;
   background-color: #fff;
 } 
@@ -26,7 +30,7 @@
 
 .label {
   text-align: center;
-  width: 260px;
+  width: 80%;
   word-wrap: break-word;
   font-family: 'Dosis', sans-serif;
   font-size: 1.4em;
@@ -35,7 +39,7 @@
 
 .button-continue {
   margin: 40px;
-  width: 250px;
+  width: 75%;
   height: 45px;
   border-radius: 100px;
   box-shadow: 0 15px 25px 0 rgba(18, 151, 147, 0.4);
@@ -48,7 +52,7 @@
 
 .button-disabled {
   margin: 40px;
-  width: 250px;
+  width: 75%;
   height: 45px;
   border-radius: 100px;
   box-shadow: 0 2px 5px 0 rgba(18, 151, 147, 0.4);
@@ -89,13 +93,13 @@
 
 
 #hideMe {
-  -moz-animation: cssAnimation 0s ease-in 2s forwards;
+  -moz-animation: cssAnimation 0s ease-in 4s forwards;
   /* Firefox */
-  -webkit-animation: cssAnimation 0s ease-in 2s forwards;
+  -webkit-animation: cssAnimation 0s ease-in 4s forwards;
   /* Safari and Chrome */
-  -o-animation: cssAnimation 0s ease-in 2s forwards;
+  -o-animation: cssAnimation 0s ease-in 4s forwards;
   /* Opera */
-  animation: cssAnimation 0s ease-in 2s forwards;
+  animation: cssAnimation 0s ease-in 4s forwards;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
@@ -156,18 +160,5 @@
 }
 
 
-@media(max-width: 400px) {
-  .content {
-    width: 280px;
-    height: 435px;
-  }
-}
-
-@media(max-height: 440px) {
-  .content {
-    width: 360px;
-    height: 300px;
-  }
-}
 
 

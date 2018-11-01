@@ -24,11 +24,11 @@ export const tokenValidator = (email, token) => {
 
 export const resendToken = (email) => {
   const body = {
-    "email": email,
+    "email": email.toLowerCase(),
   }
   return(dispatch) => {
     dispatch({type: 'SHOW_LOADER'})
-    return axios.put(`${URL}/tokens/${email}`, body,
+    return axios.put(`${URL}/tokens/${email.toLowerCase()}`, body,
     {
       params: params
     })
@@ -36,10 +36,10 @@ export const resendToken = (email) => {
       const { status } = response
       dispatch({type: 'HIDDEN_LOADER'})
       return status
-     })
-     .catch(error => {
-       console.error(error)
-       return error.response
-     })
+    })
+    .catch(error => {
+      dispatch({type: 'HIDDEN_LOADER'})
+      return error.response
+    })
   }
 }

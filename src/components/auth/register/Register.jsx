@@ -57,7 +57,7 @@ class Register extends Component {
       switch(resp.status) {
         case 200:
           localStorage.setItem('token',true)
-          history.push('/token')
+          history.replace('/token')
           break;
         default:
         this.setState({ errorMessage: resp.data.message })
@@ -91,7 +91,7 @@ class Register extends Component {
                 onChange={this.handleChange} 
                 onKeyUp={(e) => this.InputValidator(e, username,'username')} 
                 onBlur={(e) => this.InputValidator(e, username,'username')}/>
-                { (usernameValid) || usernameValid === 'not'? null : <font color="red" className="error-handler" >max 15 caracteres</font> }
+                { (usernameValid) || usernameValid === 'not'? null : <font color="red" className="error-handler" >máximo 15 caracteres</font> }
             </FormControl>
             <FormControl className="form">
               <InputLabel className="label-form" htmlFor="component-simple">SENHA</InputLabel>
@@ -99,7 +99,8 @@ class Register extends Component {
                 onChange={this.handleChange} 
                 onKeyUp={(e) => this.InputValidator(e, password,'password')} 
                 onBlur={(e) => this.InputValidator(e, password,'password')}/>
-                { (passwordValid) || passwordValid === 'not' ? null : <font color="red" className="error-handler" >min 6 e max 10 caracteres, letras e números</font>}
+                { (passwordValid) || passwordValid === 'not' ? null : <font color="red" className="error-handler" >Mínimo 6 e máximo 10 caracteres</font>}
+                { (passwordValid) || passwordValid === 'not' ? null : <font color="red" className="error-handler" >Deve conter letras e números</font>}
             </FormControl>
           <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(user.email, name, username, password)} >AVANÇAR</button>
         </div>

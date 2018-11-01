@@ -73,7 +73,7 @@ class PreLogin extends Component {
             <FormControl className="form">
               <InputLabel className="label-form" htmlFor="component-simple">EMAIL</InputLabel>
               <Input className="input" value={email} placeholder="E-mail" name="email" onChange={this.handleChange}/>
-              { errorMessage !== '' ? <font color="red">{errorMessage}<i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i></font> : '' }
+              { errorMessage !== '' ? <font color="red"><i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i>{errorMessage}</font> : '' }
             </FormControl>
             <button disabled={!formValid} className={!formValid ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(email)} >AVANÇAR</button>       
         </div>

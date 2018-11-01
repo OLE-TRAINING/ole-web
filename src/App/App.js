@@ -9,14 +9,20 @@ import  PreLogin  from '../components/auth/preLogin/PreLogin'
 import  Login  from '../components/auth/login/Login'
 import  Register  from '../components/auth/register/Register'
 import  Token  from '../components/auth/token/Token'
-import { HashLoader } from 'react-spinners';
+import { PacmanLoader } from 'react-spinners';
+
+import './app.css'
 
 class App extends Component {
   render() {
     const { loading } = this.props
     return (
       <div>
-      { loading && <HashLoader/>}
+      { loading && 
+        <div className="loader-content">
+          <PacmanLoader size={20} color="#fff" />
+        </div>
+      }
       <Router>
         <div>
           <PrivateRoute exact path="/" component={Home} keyL="user" value="true"/>
