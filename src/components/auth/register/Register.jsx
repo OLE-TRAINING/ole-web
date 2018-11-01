@@ -27,10 +27,11 @@ class Register extends Component {
   }
 
   componentDidMount() {
-    localStorage.removeItem('register')
+   
   }
   
   handleChange = (e) => {
+    this.setState({ errorMessage: '' })
     let change = {}
     change[e.target.name] = e.target.value
     this.setState(change);
@@ -71,35 +72,37 @@ class Register extends Component {
     const isEnabled = nameValid && usernameValid && passwordValid 
     
     return (
-      <div className="content">
-        <p className="label">CRIE SUA NOVA CONTA</p>
-        <p className="label-email-gray">{user.email}</p>
-          { errorMessage !== '' ? <font className="error-handler" color="red">{errorMessage}<i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i></font> : '' }
-          <FormControl className="form">
-            <InputLabel className="label-form" htmlFor="component-simple">NOME COMPLETO</InputLabel>
-            <Input className="input" value={name} placeholder="Name" name="name" 
-              onChange={this.handleChange} 
-              onKeyUp={(e) => this.InputValidator(e, name,'name')}               
-              onBlur={(e) => this.InputValidator(e, name,'name')}/>
-              {(nameValid) || nameValid === 'not' ? null : <font color="red" className="error-handler" >max 50 caracteres</font>}          
-          </FormControl>
-          <FormControl className="form">
-            <InputLabel className="label-form" htmlFor="component-simple">NOME DE USUÁRIO</InputLabel>
-            <Input className="input" value={username} placeholder="User" name="username" 
-              onChange={this.handleChange} 
-              onKeyUp={(e) => this.InputValidator(e, username,'username')} 
-              onBlur={(e) => this.InputValidator(e, username,'username')}/>
-              { (usernameValid) || usernameValid === 'not'? null : <font color="red" className="error-handler" >max 15 caracteres</font> }
-          </FormControl>
-          <FormControl className="form">
-            <InputLabel className="label-form" htmlFor="component-simple">SENHA</InputLabel>
-            <Input className="input" type="password" value={password} placeholder="Password" name="password" 
-              onChange={this.handleChange} 
-              onKeyUp={(e) => this.InputValidator(e, password,'password')} 
-              onBlur={(e) => this.InputValidator(e, password,'password')}/>
-              { (passwordValid) || passwordValid === 'not' ? null : <font color="red" className="error-handler" >min 6 e max 10 caracteres, letras e números</font>}
-          </FormControl>
-        <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(user.email, name, username, password)} >AVANÇAR</button>
+      <div className="container">
+        <div className="auth-content">
+          <p className="label">CRIE SUA NOVA CONTA</p>
+          <p className="label-email-gray">{user.email}</p>
+            { errorMessage !== '' ? <font className="error-handler" color="red"><i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i>{errorMessage}</font> : '' }
+            <FormControl className="form">
+              <InputLabel className="label-form" htmlFor="component-simple">NOME COMPLETO</InputLabel>
+              <Input className="input" value={name} placeholder="Name" name="name" 
+                onChange={this.handleChange} 
+                onKeyUp={(e) => this.InputValidator(e, name,'name')}               
+                onBlur={(e) => this.InputValidator(e, name,'name')}/>
+                {(nameValid) || nameValid === 'not' ? null : <font color="red" className="error-handler" >max 50 caracteres</font>}          
+            </FormControl>
+            <FormControl className="form">
+              <InputLabel className="label-form" htmlFor="component-simple">NOME DE USUÁRIO</InputLabel>
+              <Input className="input" value={username} placeholder="User" name="username" 
+                onChange={this.handleChange} 
+                onKeyUp={(e) => this.InputValidator(e, username,'username')} 
+                onBlur={(e) => this.InputValidator(e, username,'username')}/>
+                { (usernameValid) || usernameValid === 'not'? null : <font color="red" className="error-handler" >max 15 caracteres</font> }
+            </FormControl>
+            <FormControl className="form">
+              <InputLabel className="label-form" htmlFor="component-simple">SENHA</InputLabel>
+              <Input className="input" type="password" value={password} placeholder="Password" name="password" 
+                onChange={this.handleChange} 
+                onKeyUp={(e) => this.InputValidator(e, password,'password')} 
+                onBlur={(e) => this.InputValidator(e, password,'password')}/>
+                { (passwordValid) || passwordValid === 'not' ? null : <font color="red" className="error-handler" >min 6 e max 10 caracteres, letras e números</font>}
+            </FormControl>
+          <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(user.email, name, username, password)} >AVANÇAR</button>
+        </div>
       </div>
     )
   }

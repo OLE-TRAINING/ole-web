@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 
+import './home.css'
+
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -23,7 +25,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div >
+      <div className="home-content">          
         {this.state.redirect === true && (
           <Redirect  to="/prelogin" />
         )}
