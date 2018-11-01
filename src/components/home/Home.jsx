@@ -14,9 +14,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    localStorage.removeItem('register')
-    localStorage.removeItem('token')
-    localStorage.removeItem('login')
+
   }
 
   logout() {
@@ -29,8 +27,31 @@ class Home extends Component {
         {this.state.redirect === true && (
           <Redirect  to="/prelogin" />
         )}
-        <p>Home</p>
-        <button onClick={this.logout}>logout</button>           
+        <div className="header-content">
+          <p>Logo</p>
+          <p>Header</p>
+          <button onClick={this.logout}>logout</button>
+        </div>
+        <div className="promo-content"><p>Promo</p></div>
+        <div className="card-component">
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+          <p className="card">Card</p>
+        </div>          
       </div>
     )
   }
