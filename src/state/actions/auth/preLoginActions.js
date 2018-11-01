@@ -20,6 +20,7 @@ export const getUser = (email) => {
      }).catch( error => {
        return error.response
      })
+     
   }
 }
 

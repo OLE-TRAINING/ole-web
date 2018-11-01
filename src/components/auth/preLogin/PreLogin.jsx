@@ -67,14 +67,16 @@ class PreLogin extends Component {
   render() {
     const { email, errorMessage, formValid } = this.state
     return (
-      <div className="content">
-        <p className="label">INFORME SEU E-MAIL</p>    
-          <FormControl className="form">
-            <InputLabel className="label-form" htmlFor="component-simple">EMAIL</InputLabel>
-            <Input className="input" value={email} placeholder="E-mail" name="email" onChange={this.handleChange}/>
-            { errorMessage !== '' ? <font color="red">{errorMessage}<i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i></font> : '' }
-          </FormControl>
-          <button disabled={!formValid} className={!formValid ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(email)} >AVANÇAR</button>       
+      <div className="container">
+        <div className="auth-content">
+          <p className="label">INFORME SEU E-MAIL</p>    
+            <FormControl className="form">
+              <InputLabel className="label-form" htmlFor="component-simple">EMAIL</InputLabel>
+              <Input className="input" value={email} placeholder="E-mail" name="email" onChange={this.handleChange}/>
+              { errorMessage !== '' ? <font color="red">{errorMessage}<i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i></font> : '' }
+            </FormControl>
+            <button disabled={!formValid} className={!formValid ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(email)} >AVANÇAR</button>       
+        </div>
       </div>
     )
   }

@@ -1,12 +1,13 @@
-:root {
-  --bg-primary-color : #129793;
+#root {
+  --bg-primary-color: #129793;
   --speed-fadein: 2s;
+  background-color: var(--bg-primary-color);
 }
 
-body {
-  background-color: var(--bg-primary-color);
+body, html {
   margin: 0;
   padding: 0;
+  background-color: #129793;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;

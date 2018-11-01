@@ -26,13 +26,15 @@ export const resendToken = (email) => {
   const body = {
     "email": email,
   }
-  return() => {
+  return(dispatch) => {
+    dispatch({type: 'SHOW_LOADER'})
     return axios.put(`${URL}/tokens/${email}`, body,
     {
       params: params
     })
     .then(response => {
       const { status } = response
+      dispatch({type: 'HIDDEN_LOADER'})
       return status
      })
      .catch(error => {

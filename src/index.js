@@ -1,24 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import { createStore, applyMiddleware } from 'redux'
+import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
-
-import promise from 'redux-promise' //https://www.npmjs.com/package/redux-promise
-import thunk from 'redux-thunk' //https://www.npmjs.com/package/redux-thunk
+import { PersistGate } from 'redux-persist/lib/integration/react'
+import { persistor, store } from './store'
 
 import './index.css';
 import App from '../src/App/App';
-import * as serviceWorker from './serviceWorker';
 
-import reducers from './reducers'
-
-const devTools =  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-const store = applyMiddleware(promise, thunk)(createStore)(reducers, devTools)
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <PersistGate persistor={persistor} >
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </PersistGate>
 , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

@@ -24,10 +24,12 @@ class Token extends Component {
   }
 
   componentDidMount() {
-    localStorage.removeItem('token')
+
   }
 
   handleChange = (e) => {
+    this.setState({ resendFeedbackMessage: '' })
+    this.setState({ errorMessage: '' })
     this.setState({ token: e.target.value });
   }
 
@@ -67,20 +69,22 @@ class Token extends Component {
     const { label, label2, token, errorMessage, resendFeedbackMessage } = this.state
     const isEnabled = token.length > 0
     return (
-      <div className="content">
-        <p className="label">{user.data.registrationStatus === "PENDING" ? label2 : label}</p>
-        <p className="label-email-gray">{user.email}</p>
-        { resendFeedbackMessage !== '' ? <font className="error-handler" color="blue">{resendFeedbackMessage}</font> : '' }
-        <FormControl className="form">
-          <InputLabel className="label-form" htmlFor="component-simple">TOKEN</InputLabel>
-          <Input className="input" type="" placeholder="Token" name="token" onChange={this.handleChange}/>
-          <FormHelperText onClick={() => this.resendTokenService(user.email)} 
-            className="info-helper">Não recebeu o código?
-            <font color="red">&nbsp;Enviar novamente.</font>
-          </FormHelperText>
-          { errorMessage !== '' ? <font className="error-handler" color="red">{errorMessage}<i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i></font> : '' }
-        </FormControl>
-        <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(user.email,token)} >VALIDAR</button>            
+      <div className="container">
+        <div className="auth-content">
+          <p className="label">{user.data.registrationStatus === "PENDING" ? label2 : label}</p>
+          <p className="label-email-gray">{user.email}</p>
+          <FormControl className="form">
+            <InputLabel className="label-form" htmlFor="component-simple">TOKEN</InputLabel>
+            <Input className="input" type="" placeholder="Token" name="token" onChange={this.handleChange}/>
+            <FormHelperText onClick={() => this.resendTokenService(user.email)} 
+              className="info-helper">Não recebeu o código?
+              <font color="red">&nbsp;Enviar novamente.</font>
+            </FormHelperText>
+            { resendFeedbackMessage !== '' ? <font className="error-handler" color="blue">{resendFeedbackMessage}</font> : '' }
+            { errorMessage !== '' ? <font className="error-handler" color="red">{errorMessage}<i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i></font> : '' }
+          </FormControl>
+          <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(user.email,token)} >VALIDAR</button>            
+        </div>
       </div>
     )
   }
