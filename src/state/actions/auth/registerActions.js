@@ -3,23 +3,25 @@ import { URL, params } from '../config-request-api'
 
 export const createUser = (email, name, userName, password) => {
   const body = {
-    "email": email,
+    "email": email.toLowerCase(),
     "password": password,
     "completeName":name,
     "username": userName
   }
   
-  return() => {
+  return(dispatch) => {
+    dispatch({type: 'SHOW_LOADER'})
     return axios.post(`${URL}/users`, body, 
     {
       params: params
     })
     .then(response => {
+      dispatch({type: 'HIDDEN_LOADER'})
       return response
-     })
-     .catch(error => {
-       console.error(error)
-       return error.response
-     })
+    })
+    .catch(error => {
+      dispatch({type: 'HIDDEN_LOADER'})
+      return error.response
+    })
   }
 }

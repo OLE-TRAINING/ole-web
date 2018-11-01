@@ -136,7 +136,7 @@ class Login extends Component {
                 <FormHelperText className="info-helper">
                   <span onClick={this.changeScreenGetId}>Esqueceu a senha?</span>
                 </FormHelperText>
-                { errorMessage !== '' ? <font id="hideMe" className="error-handler" color="red">{errorMessage}<i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i></font> : '' }
+                { errorMessage !== '' ? <font id="hideMe" className="error-handler" color="red"><i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i>{errorMessage}</font> : '' }
               </FormControl>
               <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmitLogin()} >ENTRAR</button>          
             </div>
@@ -149,7 +149,7 @@ class Login extends Component {
               <FormControl className="form">
                 <InputLabel className="label-form" htmlFor="component-simple">NOME DE USUÁRIO</InputLabel>
                 <Input className="input" placeholder="username" name="username" onChange={this.handleChange}/>
-                { errorMessage !== '' ? <font id="hideMe"className="error-handler" color="red">{errorMessage}<i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i></font> : '' }
+                { errorMessage !== '' ? <font id="hideMe"className="error-handler" color="red"><i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i>{errorMessage}</font> : '' }
               </FormControl>  
               <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmitGetInfo(user.email, username)} >AVANÇAR</button>      
             </div>
@@ -158,7 +158,7 @@ class Login extends Component {
             <div className="auth-content">
               <i onClick={this.changeScreenGetId} className="fa fa-arrow-left 2px left" aria-hidden="true"></i>
               <p className="label">INFORME SUA NOVA SENHA</p>
-              { errorMessage !== '' ? <font id="hideMe" className="error-handler" color="red">{errorMessage}<i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i></font> : '' }
+              { errorMessage !== '' ? <font id="hideMe" className="error-handler" color="red"><i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i>{errorMessage}</font> : '' }
               <FormControl className="form">
                 <InputLabel className="label-form" htmlFor="component-simple">TOKEN</InputLabel>
                 <Input className="input" type="" placeholder="Token" name="token" onChange={this.handleChange}/>

@@ -3,13 +3,14 @@ import { URL, params } from '../config-request-api'
 
 export const getUser = (email) => {
   return(dispatch) => {
-    return axios.get(`${URL}/users/${email}`, 
+    dispatch({type: 'SHOW_LOADER'})
+    return axios.get(`${URL}/users/${email.toLowerCase()}`, 
     {
       params: params
     })
     .then(response => {
       const { data } = response
-      
+      dispatch({type: 'HIDDEN_LOADER'})
       dispatch({type: 'GET_USER', payload: {
         data: response.data,
         email: email
@@ -18,6 +19,7 @@ export const getUser = (email) => {
       return data
       
      }).catch( error => {
+      dispatch({type: 'HIDDEN_LOADER'})
        return error.response
      })
      
