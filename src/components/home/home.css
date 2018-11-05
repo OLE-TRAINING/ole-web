@@ -2,32 +2,4 @@
   background-color: var(--bg-primary-color);
 }
 
-.header-content {
-  height: 55px;
-  display: flex;
-  justify-content: space-between;
-}
 
-.promo-content {
-  color: white;
-  height: 420px;
-  background-color: black;
-  display: flex;
-  justify-content: center;
-}
-
-.card-component {
-  background-color: #fff;
-  display: flex;
-	flex-wrap: wrap;
-}
-
-.card {
-  display: flex;
-  border-top: 10px;
-  background-color: rgb(50, 161, 46);
-  height: 330px;
-  justify-content: center;
-  width: 18%;
-	margin: 1%;
-}

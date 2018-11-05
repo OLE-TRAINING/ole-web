@@ -24,14 +24,6 @@
   display: flex;
 }
 
-
-.header-label {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-}
-
-
 .label {
   text-align: center;
   width: 80%;
