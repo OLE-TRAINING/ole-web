@@ -1,0 +1,5 @@
+.header-content {
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+}

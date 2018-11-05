@@ -23,11 +23,6 @@ class Login extends Component {
       errorMessage: ''
     }
 
-    this.changeScreenSetPwd = this.changeScreenSetPwd.bind(this)
-  }
-
-  componentDidMount() {
-    
   }
   
   handleChange = (e) => {
@@ -62,10 +57,11 @@ class Login extends Component {
     .then((resp) => {
       switch(resp.status) {
         case 200:
-          localStorage.setItem('user',true)
-          this.changeScreenSetPwd()
+          this.setState({username: ''})
+          this.changeScreen('setPwd')
           break;
         default:
+          this.setState({username: ''})
           this.setState({ errorMessage: resp.data.message })
       }
     })
@@ -78,8 +74,7 @@ class Login extends Component {
     .then((resp) => {
       switch(resp.status) {
         case 200:
-          localStorage.setItem('user',true)
-          this.changeScreenLogin()
+          this.changeScreen('login')
           break;
         default:
           this.setState({ errorMessage: resp.data.message })
@@ -101,22 +96,12 @@ class Login extends Component {
     })
   }
 
-  changeScreenGetId = () => {
-    this.setState({ changeScreen: 'getId' })
-    this.setState({ password: '' })
-    this.setState({ errorMessage: '' })
-  }
-  
-  changeScreenSetPwd = () => {
-    this.setState({ changeScreen: 'setPwd' })
-    this.setState({ errorMessage: '' })
-  }
-
-
-  changeScreenLogin = () => {
-    this.setState({ changeScreen: 'login' })
-    this.setState({ errorMessage: '' })
-    this.setState({ resendFeedbackMessage: '' })
+  changeScreen = (flag) => {
+    this.setState({username: ''})
+    this.setState({password: ''})
+    this.setState({errorMessage: ''})
+    this.setState({resendFeedbackMessage: ''})
+    this.setState({ changeScreen: flag })
   }
 
   render() {
@@ -134,7 +119,7 @@ class Login extends Component {
                 <InputLabel className="label-form" htmlFor="component-simple">SENHA</InputLabel>
                 <Input className="input" type="password" placeholder="password" name="password" onChange={this.handleChange}/>
                 <FormHelperText className="info-helper">
-                  <span onClick={this.changeScreenGetId}>Esqueceu a senha?</span>
+                  <span onClick={() => this.changeScreen('getId')}>Esqueceu a senha?</span>
                 </FormHelperText>
                 { errorMessage !== '' ? <font id="hideMe" className="error-handler" color="red"><i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i>{errorMessage}</font> : '' }
               </FormControl>
@@ -143,7 +128,7 @@ class Login extends Component {
           )}
           {changeScreen === 'getId' && (
             <div className="auth-content">
-              <i onClick={this.changeScreenLogin} className="fa fa-arrow-left 2px left" aria-hidden="true"></i>
+              <i onClick={() => this.changeScreen('login')} className="fa fa-arrow-left fa-2x left" aria-hidden="true"></i>
               <p className="label">CONFIRME AS INFORMAÇÕES DE SUA CONTA</p>
               <p className="label-email-gray">{user.email}</p>
               <FormControl className="form">
@@ -156,7 +141,7 @@ class Login extends Component {
           )}
           {changeScreen === 'setPwd' && (
             <div className="auth-content">
-              <i onClick={this.changeScreenGetId} className="fa fa-arrow-left 2px left" aria-hidden="true"></i>
+              <i onClick={() => this.changeScreen('getId')} className="fa fa-arrow-left fa-2x left" aria-hidden="true"></i>
               <p className="label">INFORME SUA NOVA SENHA</p>
               { errorMessage !== '' ? <font id="hideMe" className="error-handler" color="red"><i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i>{errorMessage}</font> : '' }
               <FormControl className="form">

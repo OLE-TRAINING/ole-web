@@ -1,0 +1,7 @@
+.promo-content {
+  color: white;
+  height: 420px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+}

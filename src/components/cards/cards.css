@@ -1,0 +1,15 @@
+.card-component {
+  background-color: #f8f8f8;
+  display: flex;
+	flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  border-top: 10px;
+  background-color: gray;
+  height: 330px;
+  justify-content: center;
+  width: 18%;
+	margin: 1%;
+}

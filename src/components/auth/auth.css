@@ -20,13 +20,9 @@
   background-color: #fff;
 } 
 
-
-.header-label {
+.getid-content {
   display: flex;
-  justify-content: space-around;
-  width: 100%;
 }
-
 
 .label {
   text-align: center;
@@ -42,7 +38,7 @@
   width: 75%;
   height: 45px;
   border-radius: 100px;
-  box-shadow: 0 15px 25px 0 rgba(18, 151, 147, 0.4);
+  box-shadow: 0 2px 5px 0 rgba(18, 151, 147, 0.4);
   border: solid 1px #cfd0d1;
   background-color: var(--bg-primary-color); 
   color: white;
@@ -55,7 +51,7 @@
   width: 75%;
   height: 45px;
   border-radius: 100px;
-  box-shadow: 0 2px 5px 0 rgba(18, 151, 147, 0.4);
+  box-shadow: 0 2px 5px 0 rgba(137, 146, 146, 0.4);
   border: solid 1px #cfd0d1;
   background-color: #ada5a5; 
   color: white;
