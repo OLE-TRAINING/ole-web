@@ -27,7 +27,7 @@ export const resendToken = (email) => {
     "email": email.toLowerCase(),
   }
   return(dispatch) => {
-    dispatch({type: 'SHOW_LOADER'})
+    dispatch({type: 'SHOW_LOADER'}) 
     return axios.put(`${URL}/tokens/${email.toLowerCase()}`, body,
     {
       params: params
