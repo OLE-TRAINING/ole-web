@@ -13,7 +13,7 @@ export const getUser = (email) => {
       dispatch({type: 'HIDDEN_LOADER'})
       dispatch({type: 'GET_USER', payload: {
         data: response.data,
-        email: email
+        email: email.toLowerCase()
       }})
       
       return data

@@ -1,5 +1,78 @@
 .header-content {
+  background-color: var(--bg-primary-color);
+  display: grid;
+  grid-template-columns: 20% 55% 10% 10% 5%;
   height: 55px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+.header-title {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  font-family: 'Dosis';
+  text-shadow:  0 3px 3px rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 2em;
+}
+
+nav{
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  height: 100%;
+}
+
+nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+}
+
+nav ul li {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  height: 98%;
+}
+
+nav ul li a {
+  color: white;
+  padding: 0 20px;
+  text-decoration: none;
+  font-family: 'Dosis';
+  font-size: 1.4em;
+
+}
+nav ul li:hover {
+  border-bottom: 5px solid #ffcd00;
+}
+nav ul li a.active {
+  font-weight: bold;
+}
+
+.search-content {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+
+.profile-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  font-family: 'Roboto';
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.img-logo {
+  width: 100%;
+  height: 100%;
 }

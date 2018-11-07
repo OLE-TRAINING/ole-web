@@ -14,6 +14,7 @@ export const loginService = (email, password) => {
       params: params
     })
     .then(response => {
+      localStorage.setItem('token', response.headers['x-access-token'])
       dispatch({type: 'HIDDEN_LOADER'})
       return response
      })

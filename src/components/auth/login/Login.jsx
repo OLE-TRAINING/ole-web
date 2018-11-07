@@ -22,7 +22,6 @@ class Login extends Component {
       changeScreen: 'login',
       errorMessage: ''
     }
-
   }
   
   handleChange = (e) => {
@@ -51,10 +50,11 @@ class Login extends Component {
   }
   handleSubmitGetInfo = (e) => {
     const { username } = this.state
-    const { user, getInfo } = this.props
+    const { user, getInfo, resendToken } = this.props
 
+    resendToken(user.email)
     getInfo(username, user.email)
-    .then((resp) => {
+    .then(resp => {
       switch(resp.status) {
         case 200:
           this.setState({username: ''})
