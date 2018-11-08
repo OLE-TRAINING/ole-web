@@ -6,6 +6,7 @@
   align-items: center;
   position: sticky;
   top: 0;
+  z-index: 2
 }
 
 .header-title {
@@ -73,6 +74,5 @@ nav ul li a.active {
 }
 
 .img-logo {
-  width: 100%;
   height: 100%;
 }
