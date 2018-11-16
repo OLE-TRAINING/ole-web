@@ -1,7 +1,6 @@
 .header-content {
   background-color: var(--bg-primary-color);
-  display: grid;
-  grid-template-columns: 20% 55% 10% 10% 5%;
+  display: flex;
   height: 55px;
   align-items: center;
   position: sticky;
@@ -11,6 +10,7 @@
 
 .header-title {
   display: flex;
+  width: 20%;
   justify-content: center;
   font-family: 'Dosis';
   text-shadow:  0 3px 3px rgba(0, 0, 0, 0.3);
@@ -20,6 +20,7 @@
 
 nav{
   display: flex;
+  width: 60%;
   justify-content: center;
   overflow: hidden;
   height: 100%;
@@ -46,7 +47,6 @@ nav ul li a {
   text-decoration: none;
   font-family: 'Dosis';
   font-size: 1.4em;
-
 }
 nav ul li:hover {
   border-bottom: 5px solid #ffcd00;
@@ -57,15 +57,16 @@ nav ul li a.active {
 
 .search-content {
   display: flex;
+  width: 5%;
   justify-content: center;
   color: white;
 }
 
 
 .profile-settings {
+  width: 15%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-end;
   font-family: 'Roboto';
   font-weight: bold;
@@ -75,4 +76,38 @@ nav ul li a.active {
 
 .img-logo {
   height: 100%;
+}
+
+.dropdown {
+  color: white;
+  padding: 0 20px;
+  text-decoration: none;
+  font-family: 'Dosis';
+  font-size: 1.4em;
+}
+
+.dropdown-container {
+  display: none;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.9;
+  min-width: 330px;
+  margin: 178px -20px;
+}
+
+.dropdown-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 0.7em !important;
+  height: 300px;
+}
+
+.genre-style:hover {
+  color: #ffcd00 !important;
+}
+
+.dropdown:hover .dropdown-container {
+  display: block;
 }

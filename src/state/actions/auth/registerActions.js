@@ -11,10 +11,7 @@ export const createUser = (email, name, userName, password) => {
   
   return(dispatch) => {
     dispatch({type: 'SHOW_LOADER'})
-    return axios.post(`${URL}/users`, body, 
-    {
-      params: params
-    })
+    return axios.post(`${URL}/users${params}`, body)
     .then(response => {
       dispatch({type: 'HIDDEN_LOADER'})
       return response

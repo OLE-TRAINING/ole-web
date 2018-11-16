@@ -22,6 +22,7 @@
 
 .card-img-box {
   position: relative;
+
 }
 
 .card-img-info {
@@ -122,14 +123,15 @@
   display: flex;
   justify-content: flex-end;
   margin: 2% 4% 2% 0;
-}
-
-.film-price {
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   color: var(--bg-primary-color);
   font-size: .9em;
+}
+
+.rating-p {
+  margin-top: 12px !important;
 }
 
 .fa-heart-o , .fa-heart{

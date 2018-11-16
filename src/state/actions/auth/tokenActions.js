@@ -8,10 +8,7 @@ export const tokenValidator = (email, token) => {
   }
 
   return() => {
-    return axios.post(`${URL}/users/${email}/register/${token}`, body,
-    {
-      params: params
-    })
+    return axios.post(`${URL}/users/${email}/register/${token}${params}`, body)
     .then(response => {
       return response
      })
@@ -28,10 +25,7 @@ export const resendToken = (email) => {
   }
   return(dispatch) => {
     dispatch({type: 'SHOW_LOADER'}) 
-    return axios.put(`${URL}/tokens/${email.toLowerCase()}`, body,
-    {
-      params: params
-    })
+    return axios.put(`${URL}/tokens/${email.toLowerCase()}${params}`, body)
     .then(response => {
       const { status } = response
       dispatch({type: 'HIDDEN_LOADER'})

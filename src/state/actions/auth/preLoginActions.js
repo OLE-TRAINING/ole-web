@@ -4,10 +4,7 @@ import { URL, params } from '../config-request-api'
 export const getUser = (email) => {
   return(dispatch) => {
     dispatch({type: 'SHOW_LOADER'})
-    return axios.get(`${URL}/users/${email.toLowerCase()}`, 
-    {
-      params: params
-    })
+    return axios.get(`${URL}/users/${email.toLowerCase()}${params}`)
     .then(response => {
       const { data } = response
       dispatch({type: 'HIDDEN_LOADER'})
