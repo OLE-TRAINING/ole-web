@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import 'font-awesome/css/font-awesome.min.css'
 
-import { PrivateRoute } from '../components/auth/privateRoute/PrivateRoute'
 import PreLogin  from '../components/auth/preLogin/PreLogin'
 import Login  from '../components/auth/login/Login'
 import Register  from '../components/auth/register/Register'
@@ -15,28 +14,36 @@ import ErrorMsg from '../components/global/errorMsg/ErrorMsg'
 import './app.css'
 import Main from '../components/main/main';
 
+const fakeAuth = (flag) => localStorage.getItem(flag)
+
 class App extends Component {
   render() {
     const { app } = this.props
     return (
       <div>
-      { app.loader && 
-        <div className="loader-content">
-          <PacmanLoader size={20} color="#fff" />
-        </div>
-      }
+        { app.loader && 
+          <div className="loader-content">
+            <PacmanLoader size={20} color="#fff" />
+          </div>
+        }
       <Router>
         <div>
-          { app.status && 
+          { false && 
             <div className="loader-content">
               <ErrorMsg  />
             </div>
           }
-          <PrivateRoute exact path="/" component={Main} keyL="user" value="true"/>
+        <Switch>
           <Route exact path="/prelogin" component={PreLogin} />
-          <PrivateRoute path="/login" component={Login} keyL="login" value="true"/>
-          <PrivateRoute path="/register" component={Register} keyL="register" value="true"/>
-          <PrivateRoute path="/token" component={Token} keyL="token" value="true"/>
+          <Route exact path="/login" render={() =>
+            fakeAuth('login') ? (<Login />) : (<Redirect to="/prelogin" />)}/>
+          <Route exact path="/token" render={() =>
+            fakeAuth('token') ? (<Token />) : (<Redirect to="/prelogin" />)}/>
+          <Route exact path="/register" render={() =>
+            fakeAuth('register') ? (<Register />) : (<Redirect to="/prelogin" />)}/> 
+          <Route path="/" render={() =>
+            fakeAuth('main') ? (<Main />) : (<Redirect to="/prelogin" />)}/>
+        </Switch>
         </div>
       </Router>
       </div>
@@ -44,5 +51,5 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({ app: state.app})
-export default connect(mapStateToProps, null)(App)
+const mapStateToProps = state => ({ app: state.app })
+export default connect(mapStateToProps, null )(App)

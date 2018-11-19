@@ -1,17 +1,12 @@
 import React, { Component } from 'react'
 import Truncate from 'react-truncate'
 import { connect } from 'react-redux'
-
 import './promotional.css'
 
 class Promotional extends Component { 
 
-  renderPromotional() {
-    const { movies } = this.props
-    if (movies.results && movies.results.length > 0) {
-      var movie = movies.results[0]
-      console.log(movie)
-    }
+  renderPromotional() { 
+    console.log(this.props.movies)
     return (
     <div className="promo-content">
       <img className="promo-img" src={'img'} alt="terra"/>
@@ -19,7 +14,7 @@ class Promotional extends Component {
         <div className="promo-title-like">
           <div className="promo-title-content">
             <span className="promo-title">{ '' }</span>
-            <span className="promo-infos"> { 'movies.results[0].genreNames' }  | Duração: { 'movies.results[0].runtime' } | { 'movies.results[0].year' }</span>
+            <span className="promo-infos"> {''}  | Duração: { 'movies.results[0].runtime' } | { 'movies.results[0].year' }</span>
             <div className="promo-synopsis">
               <Truncate lines={4} trimWhitespace ellipsis={<span>...</span>}>
                 { 'movies.results[0].overview' } 
@@ -56,12 +51,13 @@ class Promotional extends Component {
     )
   }
 
-  render() {
+  render() { 
+    console.log(this.props.movies)  
     return (
       this.renderPromotional()
     )
   }
 }
 
-const mapStateToProps = state => ({ movies: state.movies.films})
+const mapStateToProps = state => ({ movies: state.movies.films.results})
 export default connect(mapStateToProps, null)(Promotional)

@@ -19,12 +19,13 @@ class Home extends Component {
   render() {
     return (
       <div className="home-content">          
-        <Promotional/>
+        <Promotional movies={'dsd'}/>
         <Cards />
       </div>
     )
   }
 }
+
 
 const mapDispatchToProps = (dispatch) => ({ 
   getMovies: bindActionCreators(getMovies, dispatch)
