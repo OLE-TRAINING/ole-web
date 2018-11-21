@@ -6,7 +6,7 @@ import './promotional.css'
 class Promotional extends Component { 
 
   renderPromotional() { 
-    console.log(this.props.movies)
+    //console.log(this.props.movies)
     return (
     <div className="promo-content">
       <img className="promo-img" src={'img'} alt="terra"/>
@@ -52,7 +52,7 @@ class Promotional extends Component {
   }
 
   render() { 
-    console.log(this.props.movies)  
+    //console.log(this.props.movies)  
     return (
       this.renderPromotional()
     )

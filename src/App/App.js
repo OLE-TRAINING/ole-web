@@ -17,6 +17,7 @@ import Main from '../components/main/main';
 const fakeAuth = (flag) => localStorage.getItem(flag)
 
 class App extends Component {
+  
   render() {
     const { app } = this.props
     return (
@@ -35,14 +36,14 @@ class App extends Component {
           }
         <Switch>
           <Route exact path="/prelogin" component={PreLogin} />
-          <Route exact path="/login" render={() =>
-            fakeAuth('login') ? (<Login />) : (<Redirect to="/prelogin" />)}/>
-          <Route exact path="/token" render={() =>
-            fakeAuth('token') ? (<Token />) : (<Redirect to="/prelogin" />)}/>
-          <Route exact path="/register" render={() =>
-            fakeAuth('register') ? (<Register />) : (<Redirect to="/prelogin" />)}/> 
-          <Route path="/" render={() =>
-            fakeAuth('main') ? (<Main />) : (<Redirect to="/prelogin" />)}/>
+          <Route exact path="/login" render={(props) =>
+            fakeAuth('login') ? (<Login {...props}/>) : (<Redirect to="/prelogin" />)}/>
+          <Route exact path="/token" render={(props) =>
+            fakeAuth('token') ? (<Token {...props}/>) : (<Redirect to="/prelogin" />)}/>
+          <Route exact path="/register" render={(props) =>
+            fakeAuth('register') ? (<Register {...props}/>) : (<Redirect to="/prelogin" />)}/> 
+          <Route path="/" render={(props) =>
+            fakeAuth('main') ? (<Main {...props}/>) : (<Redirect to="/prelogin" />)}/>
         </Switch>
         </div>
       </Router>

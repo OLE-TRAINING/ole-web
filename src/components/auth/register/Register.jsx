@@ -26,10 +26,6 @@ class Register extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidMount() {
-   
-  }
-  
   handleChange = (e) => {
     this.setState({ errorMessage: '' })
     let change = {}

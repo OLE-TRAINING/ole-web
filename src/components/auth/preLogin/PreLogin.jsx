@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux'
 
 import { getUser, clearState } from '../../../state/actions/auth/preLoginActions'
 
-import { FormControl, InputLabel, Input } from '@material-ui/core';
+import { FormControl, InputLabel, Input } from '@material-ui/core'
+import {inputFieldValidator} from '../../../utils/inputFieldValidator'
 import '../../global/inputTextField-mui/index.css'
 import '../auth.css'
 
@@ -30,15 +31,14 @@ class PreLogin extends Component {
   handleChange = (e) => {
     this.setState({ email: e.target.value });
     let email = e.target.value
-    if(email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+    if(inputFieldValidator(email,'email')) {
       this.setState({ formValid: true })
-      return 0
-    } 
-    this.setState({ formValid: false })
-    return 0
+    } else {
+      this.setState({ formValid: false })
+    }
   }
 
-  handleSubmit(e) {
+  handleSubmit() {
     const { email } = this.state
     const { getUser, history } = this.props
     
@@ -73,7 +73,7 @@ class PreLogin extends Component {
             <FormControl className="form">
               <InputLabel className="label-form" htmlFor="component-simple">EMAIL</InputLabel>
               <Input className="input" value={email} placeholder="E-mail" name="email" onChange={this.handleChange}/>
-              { errorMessage !== '' ? <font color="red"><i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i>{errorMessage}</font> : '' }
+              { errorMessage !== '' ? <font color="red"><i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i>Email invalido</font> : '' }
             </FormControl>
             <button disabled={!formValid} className={!formValid ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmit(email)} >AVANÇAR</button>       
         </div>
