@@ -1,11 +1,18 @@
 const NAME = 'name'
 const USERNAME = 'username'
 const PASSWORD = 'password'
+const EMAIL = 'email'
 
 export const inputFieldValidator = (data, rule) => {
   switch(rule) {
     case NAME:
       if(data.match(/^[a-záàâãéèêíïóôõöúçñ ]{1,50}$/i)) {
+        return true
+      } else { 
+        return false 
+      }
+    case EMAIL:
+      if(data.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
         return true
       } else { 
         return false 

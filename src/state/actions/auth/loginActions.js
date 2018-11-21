@@ -9,16 +9,13 @@ export const loginService = (email, password) => {
 
   return(dispatch) => {
     dispatch({type: 'SHOW_LOADER'})
-    return axios.post(`${URL}/users/validate`, body,
-    {
-      params: params
-    })
+    return axios.post(`${URL}/users/validate${params}`, body)
     .then(response => {
       localStorage.setItem('token', response.headers['x-access-token'])
       dispatch({type: 'HIDDEN_LOADER'})
       return response
-     })
-     .catch(error => {
+    })
+    .catch(error => {
       dispatch({type: 'HIDDEN_LOADER'})
       return error.response
     })
@@ -33,10 +30,7 @@ export const getInfo = (username, email) => {
 
   return(dispatch) => {
     dispatch({type: 'SHOW_LOADER'})
-    return axios.post(`${URL}/users/confirm-data`, body,
-    {
-      params: params
-    })
+    return axios.post(`${URL}/users/confirm-data${params}`, body)
     .then(response => {
       dispatch({type: 'HIDDEN_LOADER'})
       return response
@@ -58,10 +52,7 @@ export const setPwd = (email, token, password, passwordConfirm) => {
 
   return(dispatch) => {
     dispatch({type: 'SHOW_LOADER'})
-    return axios.put(`${URL}/users/password`, body,
-    {
-      params: params
-    })
+    return axios.put(`${URL}/users/password${params}`, body)
     .then(response => {
       dispatch({type: 'HIDDEN_LOADER'})
       return response

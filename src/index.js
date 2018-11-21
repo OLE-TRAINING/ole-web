@@ -11,7 +11,7 @@ import App from '../src/App/App';
 ReactDOM.render(
   <PersistGate persistor={persistor} >
     <Provider store={store}>
-      <App />
+        <App />
     </Provider>
   </PersistGate>
 , document.getElementById('root'));

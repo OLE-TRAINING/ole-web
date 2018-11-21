@@ -1,0 +1,29 @@
+.errormsg-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  background-color: #fff;
+}
+
+.erromsg-text {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.error-icon {
+  color: red;
+  margin-top: 30px;
+}
+
+.button-redirect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: red; 
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}

@@ -40,7 +40,7 @@ class Login extends Component {
     .then((resp) => {
       switch(resp.status) {
         case 200:
-          localStorage.setItem('user',true)
+          localStorage.setItem('main',true)
           history.push("/")
           break;
         default:
@@ -104,7 +104,7 @@ class Login extends Component {
     this.setState({ changeScreen: flag })
   }
 
-  render() {
+  render() {  
     const { password, username, changeScreen, errorMessage, resendFeedbackMessage, newPassword, token, newPasswordConfirm } = this.state
     const isEnabled = password.length > 0 || username.length > 0 
     const isEnabledSet = token.length > 0 && newPassword.length > 0 && newPasswordConfirm.length > 0
