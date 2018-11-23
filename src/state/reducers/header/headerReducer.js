@@ -3,7 +3,7 @@ const CHANGE_GENRE = 'CHANGE_GENRE'
 
 const INITIAL_STATE = {
   genres: [],
-  stateGenres: '-1'
+  idGenre: '-1'
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -11,7 +11,7 @@ export default (state = INITIAL_STATE, action) => {
     case GET_GENRES:
       return { ...state, genres: action.payload }
     case CHANGE_GENRE:
-    return { ...state, stateGenres: action.payload }
+    return { ...state, idGenre: action.payload }
     default:
       return state
   }

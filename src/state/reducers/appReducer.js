@@ -5,10 +5,7 @@ const HIDDEN_ERROR = 'HIDDEN_ERROR'
 
 const INITIAL_STATE = {
   loader: false,
-  errorMsg: {
-    status: false,
-    msg: ''
-  }
+  errorStatus: false
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -18,9 +15,9 @@ export default (state = INITIAL_STATE, action) => {
     case HIDDEN_LOADER:
       return { ...state, loader: false }
     case SHOW_ERROR:
-      return { ...state.errorMsg, status: true, msg: action.msg }
+      return { ...state, errorStatus: true }
     case HIDDEN_ERROR:
-      return { ...state.errorMsg, status: false }
+      return { ...state, errorStatus: false }
     default:
       return state
   }

@@ -11,9 +11,9 @@ import './home.css'
 
 class Home extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     // const { getMovies, idGenres } = this.props
-    this.props.getMovies(3)
+    this.props.getMovies(-1, 1)
   }
 
   render() {
@@ -25,7 +25,6 @@ class Home extends Component {
     )
   }
 }
-
 
 const mapDispatchToProps = (dispatch) => ({ 
   getMovies: bindActionCreators(getMovies, dispatch)

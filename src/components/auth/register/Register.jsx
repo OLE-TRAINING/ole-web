@@ -52,7 +52,7 @@ class Register extends Component {
     .then(resp => {
       switch(resp.status) {
         case 200:
-          localStorage.setItem('token',true)
+        sessionStorage.setItem('token',true)
           history.replace('/token')
           break;
         default:

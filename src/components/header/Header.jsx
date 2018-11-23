@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
-
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -13,7 +12,8 @@ class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      redirect: false
+      redirect: false,
+      classNameDrop: false
     }
     
     this.logout = this.logout.bind(this)
@@ -32,25 +32,26 @@ class Header extends Component {
     const { genres, changeState } = this.props
     let listGenres = genres.genres || []
     return listGenres.map( genre => (
-      <Link onClick={() => changeState(genre.id)} key={genre.id} to={{ pathname: "/", search: `?genre=${genre.id}` }}>
+      <Link onClick={() => ((changeState(genre.id), window.scrollTo(0, 0)))} key={genre.id} to={{ pathname: "/", search: `?genre=${genre.id}` }}>
         <span className="genre-style">{genre.name}</span>
       </Link>
     ))
   }
 
   render() {
+    const { changeState } = this.props
     return(
       <div className="header-content">
         {this.state.redirect === true && (
           <Redirect  to="/prelogin" />
         )}
-        <Link to="/" style={{ textDecoration: 'none' }} className="header-title">
+        <Link onClick={() => changeState(-1)} to="/" style={{ textDecoration: 'none' }} className="header-title">
           <b>OT</b>MOVIES
         </Link>
         <nav>
           <ul>
             <li className="dropdown">
-              Genêros <i className="fa fa-angle-down"> </i>
+              Genêros <i className="fa fa-angle-down icon-ajust"></i>
               <div className="dropdown-container">
                 <div className="dropdown-content">
                   {this.renderHeader()}
@@ -64,7 +65,10 @@ class Header extends Component {
         </nav>
         <i className="fa fa-search search-content"></i>
         <div className="profile-settings" onClick={this.logout}>
-          <span>UserName <i className="fa fa-angle-down"></i></span>
+          <div className="profile-settings-menu">
+            <span>UserName</span>
+            <i className="fa fa-angle-down"></i>
+          </div>
           <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg" alt="avatar" className="img-logo"></img>
         </div>
       </div>

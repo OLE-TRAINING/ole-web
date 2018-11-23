@@ -5,6 +5,11 @@ import Home from '../home/Home'
 import About from '../about/About'
 
 class Main extends Component {
+
+  componentWillMount() {
+    sessionStorage.removeItem('login')
+  }
+
   render() {
     return (
       <div>

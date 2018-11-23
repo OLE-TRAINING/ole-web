@@ -40,7 +40,7 @@ class Login extends Component {
     .then((resp) => {
       switch(resp.status) {
         case 200:
-          localStorage.setItem('main',true)
+        sessionStorage.setItem('main',true)
           history.push("/")
           break;
         default:

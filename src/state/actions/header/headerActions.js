@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { URL, params, headers } from '../config-request-api'
 
+import { getMovies } from '../home/homeActions'
+
 export const getGenres = () => {
   return(dispatch) => {
     dispatch({type: 'SHOW_LOADER'})
@@ -9,7 +11,7 @@ export const getGenres = () => {
       headers: headers()
     })
     .then(response => {
-      localStorage.setItem('token', response.headers['x-access-token'])
+      sessionStorage.setItem('token', response.headers['x-access-token'])
       dispatch({type: 'HIDDEN_LOADER'})
       dispatch({type: 'GET_GENRES', payload: response.data })
     })
@@ -21,7 +23,8 @@ export const getGenres = () => {
 }
 
 export const changeState = (id) => {
-  return(dispatch) => {
+    return(dispatch) => {
     dispatch({type: 'CHANGE_GENRE', payload: id })
+    dispatch(getMovies(id, 1))
   }
-}
+} 

@@ -74,6 +74,12 @@ nav ul li a.active {
   cursor: pointer;
 }
 
+.profile-settings-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .img-logo {
   height: 100%;
 }
@@ -111,3 +117,16 @@ nav ul li a.active {
 .dropdown:hover .dropdown-container {
   display: block;
 }
+
+.show { display: block; }
+
+
+.icon-ajust {
+  margin-top: 7px;
+  margin-left: 4px;
+}
+
+
+
+
+

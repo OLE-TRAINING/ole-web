@@ -5,7 +5,6 @@ export const params = '?gw-app-key=593c3280aedd01364c73000d3ac06d76'
 
 export const headers = () => {
   return {
-    'Authorization': `Bearer ${localStorage.getItem('token')}` ,
-    'x-mock': "action_genre"
+    'Authorization': `Bearer ${sessionStorage.getItem('token')}` ,
   }
 }

@@ -11,7 +11,7 @@ export const loginService = (email, password) => {
     dispatch({type: 'SHOW_LOADER'})
     return axios.post(`${URL}/users/validate${params}`, body)
     .then(response => {
-      localStorage.setItem('token', response.headers['x-access-token'])
+      sessionStorage.setItem('token', response.headers['x-access-token'])
       dispatch({type: 'HIDDEN_LOADER'})
       return response
     })
