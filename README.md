@@ -2,4 +2,6 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-Clone this repository and run the "npm install" command
+Clone this repository and run the "**npm install**" command.
+
+To start the project use "**npm start**" 
