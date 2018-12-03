@@ -8,16 +8,16 @@ import Login  from '../components/auth/login/Login'
 import Register  from '../components/auth/register/Register'
 import Token  from '../components/auth/token/Token'
 
-import { PacmanLoader } from 'react-spinners';
+import { PacmanLoader } from 'react-spinners'
 import ErrorMsg from '../components/global/errorMsg/ErrorMsg'
 
 import './app.css'
-import Main from '../components/main/main';
+import Main from '../components/main/main'
 
-const fakeAuth = (flag) => localStorage.getItem(flag)
+const fakeAuth = (flag) => sessionStorage.getItem(flag)
 
 class App extends Component {
-  
+
   render() {
     const { app } = this.props
     return (
@@ -29,10 +29,10 @@ class App extends Component {
         }
       <Router>
         <div>
-          { false && 
+          { (app.errorStatus === 401 || app.errorStatus === 500) && (
             <div className="loader-content">
-              <ErrorMsg  />
-            </div>
+              <ErrorMsg status={app.errorStatus} />
+            </div>)
           }
         <Switch>
           <Route exact path="/prelogin" component={PreLogin} />

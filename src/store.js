@@ -9,7 +9,7 @@ import thunk from 'redux-thunk' //https://www.npmjs.com/package/redux-thunk
 const persistConfig = ({ 
   key: 'root', 
   storage,
-  whitelist: ['user']
+  whitelist: ['user', 'genres']
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers)

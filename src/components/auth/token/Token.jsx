@@ -23,10 +23,6 @@ class Token extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidMount() {
-
-  }
-
   handleChange = (e) => {
     this.setState({ resendFeedbackMessage: '' })
     this.setState({ errorMessage: '' })
@@ -41,7 +37,7 @@ class Token extends Component {
     .then((resp) => {
       switch(resp.status) {
         case 200:
-          localStorage.setItem('login',true)
+          sessionStorage.setItem('login',true)
           history.replace("/login")
           break;
         default:

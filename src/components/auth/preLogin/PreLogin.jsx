@@ -18,14 +18,14 @@ class PreLogin extends Component {
       formValid: false
     }
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { clearState } = this.props
     clearState()
-    localStorage.clear()
+    sessionStorage.clear()
   }
 
   handleChange = (e) => {
@@ -46,15 +46,15 @@ class PreLogin extends Component {
 		.then(data => {
 			switch(data.registrationStatus) {
         case 'INEXISTENT':
-          localStorage.setItem('register',true)  
+        sessionStorage.setItem('register',true)  
 					history.push('/register')
 					break;
         case 'PENDING':
-          localStorage.setItem('token',true)  
+        sessionStorage.setItem('token',true)  
           history.push('/token')
 					break;
         case 'REGISTERED':
-          localStorage.setItem('login',true)  
+        sessionStorage.setItem('login',true)  
           history.push('/login')
           break;
         default:

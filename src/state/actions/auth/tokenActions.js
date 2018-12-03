@@ -1,15 +1,18 @@
 import axios from 'axios'
 import { URL, params } from '../config-request-api'
 
+import { getUser } from '../auth/preLoginActions'
+
 export const tokenValidator = (email, token) => {
   const body = {
     "email": email,
     "token": token
   }
 
-  return() => {
+  return(dispatch) => {
     return axios.post(`${URL}/users/${email}/register/${token}${params}`, body)
     .then(response => {
+      dispatch(getUser(email))
       return response
      })
      .catch(error => {

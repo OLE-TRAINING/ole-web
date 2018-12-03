@@ -52,7 +52,7 @@ class Register extends Component {
     .then(resp => {
       switch(resp.status) {
         case 200:
-          localStorage.setItem('token',true)
+        sessionStorage.setItem('token',true)
           history.replace('/token')
           break;
         default:
@@ -65,7 +65,7 @@ class Register extends Component {
   render() {
     const { user } = this.props
     const { name, username, password, nameValid, passwordValid, usernameValid, errorMessage } = this.state
-    const isEnabled = nameValid && usernameValid && passwordValid 
+    const isEnabled = nameValid !== "not"  && usernameValid !== "not" && passwordValid !== "not"
     
     return (
       <div className="container">
@@ -79,7 +79,7 @@ class Register extends Component {
                 onChange={this.handleChange} 
                 onKeyUp={(e) => this.InputValidator(e, name,'name')}               
                 onBlur={(e) => this.InputValidator(e, name,'name')}/>
-                {(nameValid) || nameValid === 'not' ? null : <font color="red" className="error-handler" >max 50 caracteres</font>}          
+                {(nameValid) || nameValid === 'not' ? null : <font color="red" className="error-handler" >Nome inválido, deve conter apenas letras e no máximo 50 caracteres</font>}          
             </FormControl>
             <FormControl className="form">
               <InputLabel className="label-form" htmlFor="component-simple">NOME DE USUÁRIO</InputLabel>
@@ -87,7 +87,7 @@ class Register extends Component {
                 onChange={this.handleChange} 
                 onKeyUp={(e) => this.InputValidator(e, username,'username')} 
                 onBlur={(e) => this.InputValidator(e, username,'username')}/>
-                { (usernameValid) || usernameValid === 'not'? null : <font color="red" className="error-handler" >máximo 15 caracteres</font> }
+                { (usernameValid) || usernameValid === 'not'? null : <font color="red" className="error-handler" >Usuário inválido, deve conter letras e ou números e no máximo 15 caracteres</font> }
             </FormControl>
             <FormControl className="form">
               <InputLabel className="label-form" htmlFor="component-simple">SENHA</InputLabel>
