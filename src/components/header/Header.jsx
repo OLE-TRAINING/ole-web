@@ -141,7 +141,6 @@ class Header extends Component {
                 ))}
               >
               </DebounceInput>
-              <button className="button-clear-input">X</button>
             </div>
           </form>
         </div>
