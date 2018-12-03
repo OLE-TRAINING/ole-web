@@ -15,7 +15,7 @@ export default (state = INITIAL_STATE, action) => {
     case HIDDEN_LOADER:
       return { ...state, loader: false }
     case SHOW_ERROR:
-      return { ...state, errorStatus: true }
+      return { ...state, errorStatus: action.payload }
     case HIDDEN_ERROR:
       return { ...state, errorStatus: false }
     default:

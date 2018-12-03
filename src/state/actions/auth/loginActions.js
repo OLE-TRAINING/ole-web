@@ -13,6 +13,7 @@ export const loginService = (email, password) => {
     .then(response => {
       sessionStorage.setItem('token', response.headers['x-access-token'])
       dispatch({type: 'HIDDEN_LOADER'})
+      dispatch({type: 'CHANGE_GENRE', payload: -1 })
       return response
     })
     .catch(error => {

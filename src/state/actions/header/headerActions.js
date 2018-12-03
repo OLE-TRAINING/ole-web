@@ -17,7 +17,11 @@ export const getGenres = () => {
     })
     .catch( error => {
       dispatch({type: 'HIDDEN_LOADER'})
-      dispatch({type: 'SHOW_ERROR', payload: error.response})
+      if(error.response){
+        dispatch({type: 'SHOW_ERROR', payload: error.response.status})
+      } else {
+        dispatch({type: 'SHOW_ERROR', payload: 500})
+      }
     }) 
   }
 }
@@ -25,6 +29,38 @@ export const getGenres = () => {
 export const changeState = (id) => {
     return(dispatch) => {
     dispatch({type: 'CHANGE_GENRE', payload: id })
-    dispatch(getMovies(id, 1))
+    dispatch({type: 'SEARCH', payload: false })
+    dispatch(getMovies(id, 1, 'genres', 20, true))
   }
 } 
+
+export const resetPage = () => {
+  return(dispatch) => {
+  dispatch({type: 'RESET_PAGE'})
+  } 
+}
+
+export const logout = (email) => {
+  return(dispatch) => {
+    return axios.post(`${URL}/users/${email}/logout${params}`)
+    
+  }
+} 
+
+export const resetSearch = () => {
+  return(dispatch) => {
+    dispatch({type: 'SEARCH', payload: false })
+  }
+}
+
+export const search = (value) => {
+  return(dispatch) => {
+    if(value.length === 0) {
+      dispatch({type: 'SEARCH', payload: false })
+      dispatch(getMovies(-1, 1, 'genres', 20, true))
+    } else {
+      dispatch({type: 'SEARCH', payload: true })
+    }
+  }
+}
+

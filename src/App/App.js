@@ -17,7 +17,7 @@ import Main from '../components/main/main'
 const fakeAuth = (flag) => sessionStorage.getItem(flag)
 
 class App extends Component {
-  
+
   render() {
     const { app } = this.props
     return (
@@ -29,10 +29,10 @@ class App extends Component {
         }
       <Router>
         <div>
-          { app.errorStatus && 
+          { (app.errorStatus === 401 || app.errorStatus === 500) && (
             <div className="loader-content">
-              <ErrorMsg  />
-            </div>
+              <ErrorMsg status={app.errorStatus} />
+            </div>)
           }
         <Switch>
           <Route exact path="/prelogin" component={PreLogin} />

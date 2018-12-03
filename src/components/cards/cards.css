@@ -3,7 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   height: 100%;
-  padding: 0 5%;
+  margin: 0px 70px;
 }
 
 .card-content {
@@ -17,6 +17,10 @@
 }
 
 .card-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
   background-color: #000;
   width: 100%;
   height: 400px;
@@ -24,7 +28,6 @@
 
 .card-img-box {
   position: relative;
-
 }
 
 .card-img-info {
@@ -159,4 +162,8 @@ a {
   background-color: #f8f8f8;
   color: #acadb6;
   font-weight: bold;
+}
+
+.load-teste {
+  min-width: 1px; min-height: 1px;
 }

@@ -121,7 +121,7 @@ class Login extends Component {
                 <FormHelperText className="info-helper">
                   <span onClick={() => this.changeScreen('getId')}>Esqueceu a senha?</span>
                 </FormHelperText>
-                { errorMessage !== '' ? <font id="hideMe" className="error-handler" color="red"><i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i>{errorMessage}</font> : '' }
+                { errorMessage !== '' ? <font id="hideMe" className="error-handler" color="red"><i className="fa fa-exclamation-triangle errorIcon" aria-hidden="true"></i>Senha incorreta</font> : '' }
               </FormControl>
               <button disabled={!isEnabled} className={!isEnabled ? "button-disabled" : "button-continue"} onClick={() => this.handleSubmitLogin()} >ENTRAR</button>          
             </div>

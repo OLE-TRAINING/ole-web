@@ -1,6 +1,7 @@
 .header-content {
   background-color: var(--bg-primary-color);
   display: flex;
+  width: 100%;
   height: 55px;
   align-items: center;
   position: sticky;
@@ -10,9 +11,9 @@
 
 .header-title {
   display: flex;
-  width: 20%;
+  width: 25%;
   justify-content: center;
-  font-family: 'Dosis';
+  font-family: 'Dosis', sans-serif;
   text-shadow:  0 3px 3px rgba(0, 0, 0, 0.3);
   color: white;
   font-size: 2em;
@@ -20,7 +21,7 @@
 
 nav{
   display: flex;
-  width: 60%;
+  width: 45%;
   justify-content: center;
   overflow: hidden;
   height: 100%;
@@ -30,15 +31,13 @@ nav ul {
   display: flex;
   margin: 0;
   padding: 0;
-  height: 100%;
-
 }
 
 nav ul li {
   display: flex;
   align-items: center;
   list-style: none;
-  height: 98%;
+  height: 97%;
 }
 
 nav ul li a {
@@ -56,9 +55,7 @@ nav ul li a.active {
 }
 
 .search-content {
-  display: flex;
-  width: 5%;
-  justify-content: center;
+  width: 25%;
   color: white;
 }
 
@@ -67,7 +64,7 @@ nav ul li a.active {
   width: 15%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-around;
   font-family: 'Roboto';
   font-weight: bold;
   color: white;
@@ -76,6 +73,7 @@ nav ul li a.active {
 
 .profile-settings-menu {
   display: flex;
+  width: 70%;
   flex-direction: column;
   align-items: flex-end;
 }
@@ -98,7 +96,8 @@ nav ul li a.active {
   background-color: #000;
   opacity: 0.9;
   min-width: 330px;
-  margin: 178px -20px;
+  top: 55px;
+  left: 35%;
 }
 
 .dropdown-content {
@@ -118,14 +117,204 @@ nav ul li a.active {
   display: block;
 }
 
-.show { display: block; }
-
-
 .icon-ajust {
   margin-top: 7px;
   margin-left: 4px;
 }
 
+.dropdown-config {
+  position: absolute;
+  width: 200px;
+  opacity: 0.9;
+  background-color: #000;
+  right: 0px;
+  top: 55px;
+}
+
+.dropdown-content-config {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.dropdown-content-config span {
+  margin-left: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.0em;
+  font-weight: bold;
+}
+
+.content-config-ajust {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.content-config-ajust:hover {
+  color: #ffcd00 !important;
+}
+
+.leave-container {
+  background-color: rgba(3, 7, 15, 0.9);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  z-index: 150;
+}
+
+.leave-content{
+  border-radius: 10px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 300px;
+  padding: 30px 0px 0px 0px;
+}
+
+.leave-content-btn {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.btn-stay {
+  background-color: green;
+}
+.btn-leave {
+  background-color: red;
+}
+
+.btn-stay {
+  border-radius: 0px 0px 0px 10px;
+  background-color: red; 
+  border: none;
+  color: white;
+  width: 50%;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.btn-stay:hover {
+  background-color: #555; 
+}
+
+.btn-leave {
+  background-color: #4CAF50; 
+  border-radius: 0px 0px 10px 0px;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  width: 50%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.btn-leave:hover {
+  background-color: #555; 
+}
+
+
+input {
+	outline: none;
+}
+input[type=search] {
+	-webkit-appearance: textfield;
+	box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+	box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none; 
+}
+
+
+input[type=search] {
+  border-radius: 10px;
+  background: url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	background-color: #129793 !important;
+	padding: 9px 10px 9px 32px;
+	width: 55px;
+	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+input[type=search]:focus {
+	padding: 9px 10px 9px 32px;
+  background-color: #fff !important;
+  background: url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+}
+
+/* Demo 2 */
+#demo-2 input[type=search] {
+	width: 15px;
+	padding-left: 100px;
+	color: transparent;
+	cursor: pointer;
+}
+
+#demo-2 input[type=search]:focus {
+	width: 80%;
+	padding-left: 32px;
+	color: #000;
+	background-color: #fff;
+  cursor: auto;
+}
+#demo-2 input:-moz-placeholder {
+	color: transparent;
+}
+#demo-2 input::-webkit-input-placeholder {
+	color: transparent;
+}
+
+.buttonInside{
+  position:relative;
+}
+
+.button-clear-input{
+  position:absolute;
+  right: 30px;
+  top: 10px;
+  border:none;
+  height:20px;
+  width:20px;
+  border-radius:100%;
+  outline:none;
+  text-align:center;
+  font-weight:bold;
+  padding:2px;
+}
+
+button::-webkit-search-cancel-button {
+	display: none; 
+}
+
+@media(max-width: 768px) { 
+  .header-content {
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+  }
+}
 
 
 
