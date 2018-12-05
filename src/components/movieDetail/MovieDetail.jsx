@@ -20,7 +20,9 @@ class MovieDetail extends Component {
               <span>LOADING</span>
             </div>}
           />  
-        : ''
+        : <div className="moviedetail-banner">
+            <p>No image</p>
+          </div>
       }
       <div className="moviedetail-img-info">
         {film.posterId         

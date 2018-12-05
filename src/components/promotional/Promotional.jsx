@@ -25,7 +25,9 @@ class Promotional extends Component {
               }
             />
           </div>
-        : ''
+        : <div className="promo-img">
+            <p>No image</p>
+          </div>
       }
       <div className="promo-img-info">
         <div className="promo-title-like">

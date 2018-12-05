@@ -1,5 +1,7 @@
 .home-content {
   background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
 }
 
 .film-not-found span {
