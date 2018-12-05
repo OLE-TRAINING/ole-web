@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
-
-import InfiniteScroll from 'react-infinite-scroller';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
-
 import Truncate from 'react-truncate'
 import { ScaleLoader} from 'react-spinners'
 import Img from 'react-image'
-
+import InfiniteScroll from 'react-infinite-scroller'
 import { getMovies } from '../../state/actions/home/homeActions'
 import { setSearchId } from '../../state/actions/movieDetail/movieDetailActions'
 
@@ -16,13 +13,12 @@ import './cards.css'
 
 class Cards extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
             tracks: [],
             hasMoreItems: true,
-            nextHref: null
-        };
+        }
     }
 
     loadItems(page) {
@@ -30,13 +26,19 @@ class Cards extends Component {
       const id = !this.props.idSearch ? this.props.idGenre : this.props.idSearch
       if(movies.page < movies.totalPages) {
         getMovies(id, page, flag, 20, false)
-      }
+      } 
     }
 
     render() {
-        const loader = <div className="loader">Loading ...</div>;
+        const loader = 
+          <div className="loader-end-page">
+            <span className="loader-card">
+              <ScaleLoader color="#129793"/>
+              <span>LOADING</span>
+            </span>
+          </div>
 
-        var items = [];
+        var items = []
         this.props.movies.results.map((item, i) => {
             return items.push(
               <div className="card-content" key={item.id}>
@@ -90,23 +92,23 @@ class Cards extends Component {
                 </div>
               </Link>
             </div> 
-            );
-        });
+            )
+        })
 
+        const { movies } = this.props
         return (
-            <InfiniteScroll
-                pageStart={1}
-                loadMore={this.loadItems.bind(this)}
-                hasMore={this.state.hasMoreItems}
-                loader={loader}>
-
-                <div className="card-component">
-                    {items}
-                </div>
-            </InfiniteScroll>
-        );
+          <InfiniteScroll
+            pageStart={1}
+            loadMore={this.loadItems.bind(this)}
+            hasMore={movies.page < movies.totalPages ? true: false}
+            loader={loader}>
+              <div className="card-component">
+                  {items}
+              </div>
+          </InfiniteScroll>
+        )
     }
-};
+}
 
 
 const mapStateToProps = state => ({ 

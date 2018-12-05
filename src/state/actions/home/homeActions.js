@@ -15,7 +15,10 @@ export const getMovies = (id, page, type, amount, load) => {
       sessionStorage.setItem('token', response.headers['x-access-token'])
       dispatch({type: 'GET_MOVIES', payload: response.data })
       dispatch({type: 'SET_PAGE', payload: response.data.page })
-      dispatch({type: 'HIDDEN_LOADER'})     
+      dispatch({type: 'HIDDEN_LOADER'})   
+      if(response.data.page === response.data.totalPage) {
+        return false
+      }
     })
     .catch( error => {
       dispatch({type: 'HIDDEN_LOADER'})

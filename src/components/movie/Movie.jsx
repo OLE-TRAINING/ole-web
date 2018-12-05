@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -23,7 +23,7 @@ class Movie extends Component {
 
   render() {
     const { search } = this.props.location
-    let idSearch = search.substring(1, search.length);
+    let idSearch = search.substring(1, search.length)
     return (
       <div className="home-content">
         {!this.props.search && ( 

@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import { loginService, getInfo, setPwd } from '../../../state/actions/auth/loginActions'
 import { resendToken } from '../../../state/actions/auth/tokenActions'
 
-import { FormControl, InputLabel, Input, FormHelperText } from '@material-ui/core';
+import { FormControl, InputLabel, Input, FormHelperText } from '@material-ui/core'
 import '../../global/inputTextFieldHelper-mui/index.css'
 import '../auth.css'
 
@@ -29,7 +29,7 @@ class Login extends Component {
     this.setState({ resendFeedbackMessage: '' })
     let change = {}
     change[e.target.name] = e.target.value
-    this.setState(change);
+    this.setState(change)
   }
 
   handleSubmitLogin = (e) => {
@@ -42,7 +42,7 @@ class Login extends Component {
         case 200:
         sessionStorage.setItem('main',true)
           history.push("/")
-          break;
+          break
         default:
           this.setState({ errorMessage: resp.data.message })
       }
@@ -59,7 +59,7 @@ class Login extends Component {
         case 200:
           this.setState({username: ''})
           this.changeScreen('setPwd')
-          break;
+          break
         default:
           this.setState({username: ''})
           this.setState({ errorMessage: resp.data.message })
@@ -75,7 +75,7 @@ class Login extends Component {
       switch(resp.status) {
         case 200:
           this.changeScreen('login')
-          break;
+          break
         default:
           this.setState({ errorMessage: resp.data.message })
       }
@@ -89,7 +89,7 @@ class Login extends Component {
       switch(resp) {
         case 200:
           this.setState({ resendFeedbackMessage: 'Token enviado com sucesso' })
-          break;
+          break
         default:
           //this.setState({ resendFeedbackMessage: resp.data.message || '' })
       }

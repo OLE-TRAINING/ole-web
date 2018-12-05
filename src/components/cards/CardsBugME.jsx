@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Truncate from 'react-truncate'
-import { ScaleLoader} from 'react-spinners'
+import { ScaleLoader } from 'react-spinners'
 import Img from 'react-image'
 
 import { getMovies } from '../../state/actions/home/homeActions'
@@ -14,7 +14,7 @@ import './cards.css'
 class Cards extends React.Component {
   constructor(props) {
     super(props)
-    this.loadingRef = React.createRef();
+    this.loadingRef = React.createRef()
     this.state = {
       films: [],
       page: 1,

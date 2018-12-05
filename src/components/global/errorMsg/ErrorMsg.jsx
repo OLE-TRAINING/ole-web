@@ -20,7 +20,7 @@ class ErrorMsg extends Component {
     switch(status) {
       case 401:
         this.setState({ msgErro: 'Sessao expirada, por favor entre novamente' })
-        break;
+        break
       default:
         this.setState({ msgErro: 'Erro inexperado' })
     }
