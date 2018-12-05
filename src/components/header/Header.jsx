@@ -137,7 +137,8 @@ class Header extends Component {
                   20,
                   true
                 ),
-                window.scrollTo(0, 0)
+                window.scrollTo(0, 0),
+                event.preventDefault()
                 ))}
               >
               </DebounceInput>
