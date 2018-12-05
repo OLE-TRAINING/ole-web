@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormControl, InputLabel, Input } from '@material-ui/core';
+import { FormControl, InputLabel, Input } from '@material-ui/core'
 
 import './index.css'
 

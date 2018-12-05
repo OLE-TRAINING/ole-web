@@ -30,7 +30,7 @@ class Register extends Component {
     this.setState({ errorMessage: '' })
     let change = {}
     change[e.target.name] = e.target.value
-    this.setState(change);
+    this.setState(change)
   }
 
   InputValidator(e, state, rule) {
@@ -54,7 +54,7 @@ class Register extends Component {
         case 200:
         sessionStorage.setItem('token',true)
           history.replace('/token')
-          break;
+          break
         default:
         this.setState({ errorMessage: resp.data.message })
       }

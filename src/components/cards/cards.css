@@ -150,13 +150,20 @@ a {
 }
 
 .loader-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   background-color: #f8f8f8;
   color: #acadb6;
   font-weight: bold;
 }
 
-.load-teste {
-  min-width: 1px; min-height: 1px;
+.loader-end-page {
+  margin: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media(max-width: 768px) { 

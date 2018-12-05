@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -26,7 +26,7 @@ class Token extends Component {
   handleChange = (e) => {
     this.setState({ resendFeedbackMessage: '' })
     this.setState({ errorMessage: '' })
-    this.setState({ token: e.target.value });
+    this.setState({ token: e.target.value })
   }
 
   handleSubmit = (e) => {
@@ -39,7 +39,7 @@ class Token extends Component {
         case 200:
           sessionStorage.setItem('login',true)
           history.replace("/login")
-          break;
+          break
         default:
           this.setState({ errorMessage: resp.data.message })
       }
@@ -53,7 +53,7 @@ class Token extends Component {
       switch(resp) {
         case 200:
           this.setState({ resendFeedbackMessage: 'Token enviado com sucesso' })
-          break;
+          break
         default:
           //this.setState({ resendFeedbackMessage: resp.data.message || '' })
       }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 
-import {DebounceInput} from 'react-debounce-input';
+import {DebounceInput} from 'react-debounce-input'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -34,21 +34,21 @@ class Header extends Component {
   }
 
   showMenu(event) {
-    event.preventDefault();
+    event.preventDefault()
     
     this.setState({ showMenu: true }, () => {
-      document.addEventListener('click', this.closeMenu);
-    });
+      document.addEventListener('click', this.closeMenu)
+    })
   }
   
   closeMenu(event) {
-    event.preventDefault();
+    event.preventDefault()
     if (!this.dropdownMenu.contains(event.target) || 1) {
         
       
       this.setState({ showMenu: false }, () => {
-        document.removeEventListener('click', this.closeMenu);
-      });  
+        document.removeEventListener('click', this.closeMenu)
+      })
       
     }
   }
@@ -154,7 +154,7 @@ class Header extends Component {
                 <div
                 className="dropdown-config"
                   ref={(element) => {
-                    this.dropdownMenu = element;
+                    this.dropdownMenu = element
                   }}
                 >
                 <div >

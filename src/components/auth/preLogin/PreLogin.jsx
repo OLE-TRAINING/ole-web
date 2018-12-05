@@ -29,7 +29,7 @@ class PreLogin extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({ email: e.target.value });
+    this.setState({ email: e.target.value })
     let email = e.target.value
     if(inputFieldValidator(email,'email')) {
       this.setState({ formValid: true })
@@ -48,15 +48,15 @@ class PreLogin extends Component {
         case 'INEXISTENT':
         sessionStorage.setItem('register',true)  
 					history.push('/register')
-					break;
+					break
         case 'PENDING':
         sessionStorage.setItem('token',true)  
           history.push('/token')
-					break;
+					break
         case 'REGISTERED':
         sessionStorage.setItem('login',true)  
           history.push('/login')
-          break;
+          break
         default:
           this.setState({ errorMessage: data.data.message })
           history.push('/prelogin')
