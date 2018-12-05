@@ -164,6 +164,12 @@ a {
     margin: 0px;
   }
 }
+@media(max-width: 768px) { 
+  .card-content {
+    width: 31%;
+    margin: 2% 1%; 
+  }
+}
 
 @media(max-width: 414px) { 
   .card-content {
@@ -172,11 +178,5 @@ a {
   }
 }
 
-@media(min-width: 768px) { 
-  .card-content {
-    width: 31%;
-    margin: 2% 1%; 
-  }
-}
 
 
